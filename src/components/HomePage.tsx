@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import {
   ChevronDown,
   Shield,
@@ -13,6 +14,40 @@ import {
   Briefcase,
 } from 'lucide-react';
 
+const devWords = [
+  'async/await',
+  'Microservices',
+  'Kubernetes',
+  'React Hooks',
+  'GraphQL',
+  'Docker',
+  'CI/CD',
+  'Typescript',
+  'Redis',
+  'Postgres',
+  'Mongodb',
+  'REST APIs',
+  'Websockets',
+  'Serverless',
+  'Terraform',
+  'Jenkins',
+];
+
+const floatingWord = (word: string, delay: number) => (
+  <div
+    key={word}
+    className="absolute text-slate-500 text-sm font-mono opacity-20 animate-pulse"
+    style={{
+      left: `${Math.floor(Math.random() * 80 + 10)}%`,
+      top: `${Math.floor(Math.random() * 80 + 10)}%`,
+      animationDelay: `${delay}s`,
+      animationDuration: `${3 + Math.random() * 2}s`,
+    }}
+  >
+    {word}
+  </div>
+);
+
 export function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -20,43 +55,19 @@ export function HomePage() {
     setIsVisible(true);
   }, []);
 
-  const devWords = [
-    'async/await',
-    'Microservices',
-    'Kubernetes',
-    'React Hooks',
-    'GraphQL',
-    'Docker',
-    'CI/CD',
-    'Typescript',
-    'Redis',
-    'Postgres',
-    'Mongodb',
-    'REST APIs',
-    'Websockets',
-    'Serverless',
-    'Terraform',
-    'Jenkins',
-  ];
-
-  const floatingWord = (word: string, delay: number) => (
-    <div
-      key={word}
-      className="absolute text-slate-500 text-sm font-mono opacity-20 animate-pulse"
-      style={{
-        left: `${Math.floor(Math.random() * 80 + 10)}%`,
-        top: `${Math.floor(Math.random() * 80 + 10)}%`,
-        animationDelay: `${delay}s`,
-        animationDuration: `${3 + Math.random() * 2}s`,
-      }}
-    >
-      {word}
-    </div>
-  );
+  const handleJoinClick = (functionality: string) => {
+    toast.info(`${functionality} functionality coming soon!`, {
+      autoClose: 3000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section */}
+      <ToastContainer />
       <section className="relative min-h-screen flex items-center justify-center px-4">
         {/* Floating Dev Words Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -90,21 +101,27 @@ export function HomePage() {
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
             A curated hiring platform where experienced engineers meet
             forward-thinking companies.{' '}
-            <span className="text-white font-medium">
+            <span className="text-white font-medium mx-2">
               No clutter, no guesswork
             </span>
-            —just the right people, the right opportunities.
+            just the right people, the right opportunities.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-            <button className="group px-12 py-4 bg-white text-black font-bold text-lg rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-2xl">
+            <button
+              className="group px-12 py-4 bg-white text-black font-bold text-lg rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-2xl"
+              onClick={() => handleJoinClick('Explore Opportunities')}
+            >
               <span className="flex items-center justify-center">
                 Explore Opportunities
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </button>
 
-            <button className="group px-12 py-4 border-2 border-gray-600 text-white font-bold text-lg rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-300 transform hover:scale-105">
+            <button
+              className="group px-12 py-4 border-2 border-gray-600 text-white font-bold text-lg rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-300 transform hover:scale-105"
+              onClick={() => handleJoinClick('Learn More')}
+            >
               <span className="flex items-center justify-center">
                 Learn More
                 <ChevronDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
@@ -119,11 +136,9 @@ export function HomePage() {
                 <Users className="w-6 h-6 text-white" />
               </div>
               <div className="text-2xl md:text-3xl font-bold text-white">
-                2+
+                Minimum 2+
               </div>
-              <div className="text-sm text-gray-500">
-                Years Experience Minimum
-              </div>
+              <div className="text-sm text-gray-500">Years of Experience</div>
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-2">
@@ -193,7 +208,7 @@ export function HomePage() {
                   Our Solution:
                 </h3>
                 <ul className="text-gray-300 space-y-2">
-                  <li>• Verified 2+ year experienced candidates</li>
+                  <li>• Verified minimum 2+ years of experienced candidates</li>
                   <li>• 100% upfront salary transparency</li>
                   <li>• Relevant matches only</li>
                   <li>• Mutual respect from day one</li>
@@ -376,7 +391,7 @@ export function HomePage() {
             {[
               {
                 title: 'Skilled-Only Roles',
-                desc: 'Every position requires 2+ years experience or proven expertise. No entry-level noise.',
+                desc: 'Every position requires minimum 2+ years of proven experience. No entry-level noise.',
                 icon: Shield,
               },
               {
@@ -499,12 +514,18 @@ export function HomePage() {
           </h2>
 
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-            TheOGs is for developers with 2+ years of experience and companies
-            who want better hires — faster.
+            TheOGs is for developers with minimum 2+ years of experience seeking
+            and offering quality opportunities.{' '}
+            <span className="text-white font-medium">
+              Join us and cut through the noise.
+            </span>
           </p>
 
           <div className="space-y-6">
-            <button className="group px-16 py-5 bg-white text-black font-bold text-xl rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-2xl">
+            <button
+              className="group px-16 py-5 bg-white text-black font-bold text-xl rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-2xl"
+              onClick={() => handleJoinClick('Join')}
+            >
               <span className="flex items-center justify-center">
                 Join TheOGs
                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
