@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,13 @@ export function Header() {
         {/* Brand */}
         <h1 className="text-2xl font-playfair font-bold tracking-tight">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            TheOGs
+            <Image
+              src="/logo.png"
+              alt="TheOGs"
+              width={80}
+              height={80}
+              className="rounded-full border border-gray-700"
+            />
           </Link>
         </h1>
 

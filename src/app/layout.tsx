@@ -16,9 +16,54 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap"
           rel="stylesheet"
+        />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="robots" content="index, follow" />
+        <title>
+          TheOGs | Swipe-Based Job Matching for Experienced Professionals
+        </title>
+        <meta
+          name="description"
+          content="TheOGs is a swipe-based job matching platform exclusively for experienced professionals, helping you find your ideal career opportunity faster."
+        />
+        <meta
+          name="keywords"
+          content="TheOGs, job matching, swipe jobs, experienced professionals, career, hiring, recruitment"
+        />
+        <meta name="author" content="TheOGs" />
+        <meta name="publisher" content="TheOGs" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="TheOGs | Swipe-Based Job Matching" />
+        <meta
+          property="og:description"
+          content="Exclusive job matching for experienced professionals with a swipe-based interface to find your next career opportunity."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://theogs.com" />
+        <meta property="og:image" content="https://theogs.com/logo.png" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* <meta name="twitter:site" content="@TheOGsOfficial" /> */}
+        <meta
+          name="twitter:title"
+          content="TheOGs | Swipe-Based Job Matching"
+        />
+        <meta
+          name="twitter:description"
+          content="Find your next career opportunity fast with TheOGs, the swipe-based job platform for experienced professionals."
+        />
+        <meta
+          name="twitter:image"
+          content="https://theogs.com/twitter-image.jpg"
         />
       </head>
       <body className="bg-black text-white font-inter">
@@ -57,6 +102,10 @@ export default function RootLayout({
                       href: '/legal/copyright-policy',
                     },
                     { name: 'Consent Settings', href: '/legal/consent' },
+                    {
+                      name: 'Child Safety Standards',
+                      href: '/legal/child-safety',
+                    },
                   ].map((link, i) => (
                     <li key={i}>
                       <Link

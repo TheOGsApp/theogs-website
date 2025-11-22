@@ -80,7 +80,9 @@ export default function AboutPage() {
               className="rounded-full mx-auto mb-4 border border-gray-700"
             />
             <h3 className="text-xl font-semibold">Vinay</h3>
-            <p className="text-gray-400 text-sm mb-3">Cloud Engineer</p>
+            <p className="text-gray-400 text-sm mb-3">
+              Co-founder & Cloud Engineer
+            </p>
             <p className="text-gray-300 text-sm leading-relaxed">
               Tech innovator building intelligent hiring tools for the future.
             </p>

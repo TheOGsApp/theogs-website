@@ -6,7 +6,14 @@ export default function UserAgreementPage() {
       <h1 className="text-3xl font-playfair font-bold mb-6">
         TheOGs User Agreement
       </h1>
-      <p className="text-gray-400 mb-6">Effective Date: August 19, 2025</p>
+      <p className="text-gray-400 mb-6">
+        Effective Date:{' '}
+        {new Date().toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+      </p>
 
       {/* Introduction */}
       <section className="mb-8 pb-6 border-b border-gray-800">
