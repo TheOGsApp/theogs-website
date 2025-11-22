@@ -1,9 +1,76 @@
 'use client';
 
-import { appConfig } from '@/config';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { DynamicIcon, IconName } from 'lucide-react/dynamic';
+
+import { appConfig } from '@/config';
+
+interface SocialMediaLink {
+  platform: string;
+  url: string;
+  icon: IconName;
+}
+
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  description: string;
+  socialMediaLinks: SocialMediaLink[];
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    name: 'Naren',
+    role: 'Founder & CEO',
+    image: '/team/naren.png',
+    description:
+      'A tech visionary and leader, Naren is dedicated to creating limitless opportunities and shaping careers through innovation. As Founder and CEO, he drives the company’s mission to empower individuals, unlocking new possibilities in the tech world.',
+    socialMediaLinks: [
+      {
+        platform: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/narenv7',
+        icon: 'linkedin',
+      },
+      {
+        platform: 'X',
+        url: 'https://x.com/narenv456',
+        icon: 'twitter',
+      },
+      {
+        platform: 'Instagram',
+        url: 'https://www.instagram.com/narenv7',
+        icon: 'instagram',
+      },
+    ],
+  },
+  {
+    name: 'Vinay',
+    role: 'Co-founder & CCO',
+    image: '/team/vinay.jpeg',
+    description:
+      'A cloud technology innovator, Vinay is dedicated to building cutting-edge solutions that leverage the power of the cloud. As Co-founder and CCO, he’s shaping the future of cloud-based systems to drive efficiency and innovation.',
+    socialMediaLinks: [
+      {
+        platform: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/vinay-kurra',
+        icon: 'linkedin',
+      },
+      {
+        platform: 'X',
+        url: 'https://x.com/VinayKurra28',
+        icon: 'twitter',
+      },
+      {
+        platform: 'Instagram',
+        url: 'https://www.instagram.com/vinay_kurra',
+        icon: 'instagram',
+      },
+    ],
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -47,46 +114,49 @@ export default function AboutPage() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {/* Person 1 */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="bg-gray-900 rounded-xl p-6 border border-gray-800 text-center shadow-lg"
-          >
-            <Image
-              src="/team/naren.png"
-              alt="Naren"
-              width={120}
-              height={120}
-              className="rounded-full mx-auto mb-4 border border-gray-700"
-            />
-            <h3 className="text-xl font-semibold">Naren</h3>
-            <p className="text-gray-400 text-sm mb-3">Founder & CEO</p>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Tech mastermind shaping careers and creating limitless
-              opportunities.
-            </p>
-          </motion.div>
+          {teamMembers.map((member) => (
+            <motion.div
+              key={member.name}
+              whileHover={{ scale: 1.05 }}
+              className="bg-gray-900 rounded-xl p-6 border border-gray-800 text-center shadow-lg"
+            >
+              <Image
+                src={member.image}
+                alt={member.name}
+                width={120}
+                height={120}
+                className="rounded-full mx-auto mb-4 border border-gray-700"
+              />
 
-          {/* Person 2 */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="bg-gray-900 rounded-xl p-6 border border-gray-800 text-center shadow-lg"
-          >
-            <Image
-              src="/team/vinay.jpeg"
-              alt="Vinay"
-              width={120}
-              height={120}
-              className="rounded-full mx-auto mb-4 border border-gray-700"
-            />
-            <h3 className="text-xl font-semibold">Vinay</h3>
-            <p className="text-gray-400 text-sm mb-3">
-              Co-founder & Cloud Engineer
-            </p>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Tech innovator building intelligent hiring tools for the future.
-            </p>
-          </motion.div>
+              <h3 className="text-xl font-semibold">{member.name}</h3>
+              <p className="text-gray-400 text-sm mb-3">{member.role}</p>
+
+              <p className="text-gray-300 text-sm leading-relaxed">
+                {member.description}
+              </p>
+
+              {/* ===== Social Icons ===== */}
+              <div className="flex justify-center space-x-4 mt-4">
+                {member.socialMediaLinks.map((link) => {
+                  return (
+                    <a
+                      key={link.platform}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      <DynamicIcon
+                        name={link.icon}
+                        size={20}
+                        className="hover:text-blue-600"
+                      />
+                    </a>
+                  );
+                })}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
