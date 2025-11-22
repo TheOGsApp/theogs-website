@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { DynamicIcon } from 'lucide-react/dynamic';
+
+import { appLinks } from '@/constants';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,15 +19,15 @@ export function Header() {
             <Image
               src="/logo.png"
               alt="TheOGs"
-              width={80}
-              height={80}
-              className="rounded-full border border-gray-700"
+              width={56}
+              height={56}
+              className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-gray-700 "
             />
           </Link>
         </h1>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-8 text-sm uppercase tracking-wide font-semibold">
+        <nav className="hidden md:flex space-x-8 text-sm uppercase tracking-wide font-semibold items-center">
           <Link
             href="/"
             className="hover:text-gray-300 transition-colors duration-200"
@@ -43,6 +46,28 @@ export function Header() {
           >
             Contact
           </Link>
+
+          {/* App Links */}
+          <div className="flex space-x-4 ml-4">
+            {appLinks
+              .filter((link) => link.published)
+              .map((link) => (
+                <a
+                  key={link.id}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-90 transition-opacity hover:scale-110"
+                >
+                  <Image
+                    src={link.imgSrc}
+                    alt={link.alt}
+                    width={120}
+                    height={40}
+                  />
+                </a>
+              ))}
+          </div>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -51,26 +76,14 @@ export function Header() {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d={isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}
-            />
-          </svg>
+          <DynamicIcon name={isMenuOpen ? 'x' : 'menu'} className="w-6 h-6" />
         </button>
       </div>
 
       {/* Mobile Nav */}
       <nav
         className={`md:hidden bg-black/90 border-t border-gray-800 px-4 overflow-hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-60 py-4' : 'max-h-0'
+          isMenuOpen ? 'max-h-[400px] py-4' : 'max-h-0'
         }`}
       >
         <Link
@@ -91,6 +104,21 @@ export function Header() {
         >
           Contact
         </Link>
+
+        {/* App Links */}
+        <div className="flex flex-col space-y-2 mt-4">
+          {appLinks.map((link) => (
+            <a
+              key={link.id}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <Image src={link.imgSrc} alt={link.alt} width={150} height={50} />
+            </a>
+          ))}
+        </div>
       </nav>
     </header>
   );

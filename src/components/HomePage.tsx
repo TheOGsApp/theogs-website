@@ -1,18 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import {
-  ChevronDown,
-  Shield,
-  DollarSign,
-  Clock,
-  ArrowRight,
-  Users,
-  Code,
-  Zap,
-  Briefcase,
-} from 'lucide-react';
+import { DynamicIcon } from 'lucide-react/dynamic';
 
 const devWords = [
   'async/await',
@@ -55,19 +44,15 @@ export function HomePage() {
     setIsVisible(true);
   }, []);
 
-  const handleJoinClick = (functionality: string) => {
-    toast.info(`${functionality} functionality coming soon!`, {
-      autoClose: 3000,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
+  const navToAppLinks = () => {
+    document
+      .getElementById('app-download')
+      ?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section */}
-      <ToastContainer />
       <section className="relative min-h-screen flex items-center justify-center px-4">
         {/* Floating Dev Words Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -79,7 +64,7 @@ export function HomePage() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h1 className="text-8xl md:text-9xl font-black tracking-tight mb-6 text-white">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-6 text-white">
             TheOGs
           </h1>
 
@@ -87,44 +72,47 @@ export function HomePage() {
             <div className="w-24 h-[3px] bg-white mx-auto" />
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-light text-gray-300 mb-8 leading-tight">
-            Connecting{' '}
+          <h2 className="text-xl md:text-4xl font-light text-gray-300 mb-8 leading-tight">
+            OGs is the space for senior tech professionals who want meaningful
+            roles, not clutter.{' '}
             <span className="font-bold text-white relative">
-              Proven Developers
-            </span>{' '}
-            and{' '}
-            <span className="font-bold text-white relative">
-              Quality Companies
+              Here, your experience is valued and every job is curated.
             </span>
           </h2>
 
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            A curated hiring platform where experienced engineers meet
-            forward-thinking companies.{' '}
+            Trusted companies, real openings, no distractions.{' '}
             <span className="text-white font-medium mx-2">
-              No clutter, no guesswork
-            </span>
-            just the right people, the right opportunities.
+              Only opportunities that match your level.
+            </span>{' '}
+            If you are an OG in your field, this is where you belong. Find the
+            perfect fit for your next chapter.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
             <button
               className="group px-12 py-4 bg-white text-black font-bold text-lg rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-2xl"
-              onClick={() => handleJoinClick('Explore Opportunities')}
+              onClick={navToAppLinks}
             >
               <span className="flex items-center justify-center">
                 Explore Opportunities
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <DynamicIcon
+                  name="arrow-right"
+                  className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+                />
               </span>
             </button>
 
             <button
               className="group px-12 py-4 border-2 border-gray-600 text-white font-bold text-lg rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-300 transform hover:scale-105"
-              onClick={() => handleJoinClick('Learn More')}
+              onClick={navToAppLinks}
             >
               <span className="flex items-center justify-center">
                 Learn More
-                <ChevronDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
+                <DynamicIcon
+                  name="chevron-down"
+                  className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform"
+                />
               </span>
             </button>
           </div>
@@ -133,7 +121,7 @@ export function HomePage() {
           <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="text-center">
               <div className="flex justify-center mb-2">
-                <Users className="w-6 h-6 text-white" />
+                <DynamicIcon name="users" className="w-6 h-6 text-white" />
               </div>
               <div className="text-2xl md:text-3xl font-bold text-white">
                 Minimum 2+
@@ -142,7 +130,10 @@ export function HomePage() {
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-2">
-                <DollarSign className="w-6 h-6 text-white" />
+                <DynamicIcon
+                  name="dollar-sign"
+                  className="w-6 h-6 text-white"
+                />
               </div>
               <div className="text-2xl md:text-3xl font-bold text-white">
                 100%
@@ -151,7 +142,7 @@ export function HomePage() {
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-2">
-                <Shield className="w-6 h-6 text-white" />
+                <DynamicIcon name="shield" className="w-6 h-6 text-white" />
               </div>
               <div className="text-2xl md:text-3xl font-bold text-white">
                 Curated
@@ -242,7 +233,10 @@ export function HomePage() {
             {/* For Developers */}
             <div className="bg-white/5 border border-gray-800 rounded-2xl p-8">
               <div className="flex items-center mb-6">
-                <Code className="w-8 h-8 text-blue-400 mr-4" />
+                <DynamicIcon
+                  name="code"
+                  className="w-8 h-8 text-blue-400 mr-4"
+                />
                 <h3 className="text-3xl font-bold">For Developers</h3>
               </div>
 
@@ -294,7 +288,10 @@ export function HomePage() {
             {/* For Companies */}
             <div className="bg-white/5 border border-gray-800 rounded-2xl p-8">
               <div className="flex items-center mb-6">
-                <Briefcase className="w-8 h-8 text-purple-400 mr-4" />
+                <DynamicIcon
+                  name="briefcase"
+                  className="w-8 h-8 text-purple-400 mr-4"
+                />
                 <h3 className="text-3xl font-bold">For Companies</h3>
               </div>
 
@@ -392,17 +389,32 @@ export function HomePage() {
               {
                 title: 'Skilled-Only Roles',
                 desc: 'Every position requires minimum 2+ years of proven experience. No entry-level noise.',
-                icon: Shield,
+                icon: () => (
+                  <DynamicIcon
+                    name="shield"
+                    className="w-8 h-8 text-white group-hover:text-black transition-colors"
+                  />
+                ),
               },
               {
                 title: 'Transparent Salaries',
                 desc: 'No hidden numbers. Every role shows exact salary ranges upfront.',
-                icon: DollarSign,
+                icon: () => (
+                  <DynamicIcon
+                    name="dollar-sign"
+                    className="w-8 h-8 text-white group-hover:text-black transition-colors"
+                  />
+                ),
               },
               {
                 title: 'Respect for Time',
                 desc: 'Efficient, relevant hiring without irrelevant tests or drawn-out processes.',
-                icon: Clock,
+                icon: () => (
+                  <DynamicIcon
+                    name="clock"
+                    className="w-8 h-8 text-white group-hover:text-black transition-colors"
+                  />
+                ),
               },
             ].map((feature, i) => (
               <div
@@ -410,7 +422,7 @@ export function HomePage() {
                 className="group border border-gray-800 rounded-2xl p-8 hover:bg-white hover:text-black transition-all duration-300 transform hover:-translate-y-1"
               >
                 <div className="mb-6">
-                  <feature.icon className="w-8 h-8 text-white group-hover:text-black transition-colors" />
+                  <feature.icon />
                 </div>
 
                 <h3 className="text-2xl font-bold mb-4 group-hover:text-black transition-colors">
@@ -524,27 +536,30 @@ export function HomePage() {
           <div className="space-y-6">
             <button
               className="group px-16 py-5 bg-white text-black font-bold text-xl rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-2xl"
-              onClick={() => handleJoinClick('Join')}
+              onClick={navToAppLinks}
             >
               <span className="flex items-center justify-center">
                 Join TheOGs
-                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                <DynamicIcon
+                  name="arrow-right"
+                  className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform"
+                />
               </span>
             </button>
 
             <div className="flex items-center justify-center space-x-6 text-sm text-gray-500">
               <span className="flex items-center">
-                <Users className="w-4 h-4 mr-1" />
+                <DynamicIcon name="users" className="w-4 h-4 mr-1" />
                 2+ years experience required
               </span>
               <span>•</span>
               <span className="flex items-center">
-                <DollarSign className="w-4 h-4 mr-1" />
+                <DynamicIcon name="dollar-sign" className="w-4 h-4 mr-1" />
                 Transparent salaries
               </span>
               <span>•</span>
               <span className="flex items-center">
-                <Zap className="w-4 h-4 mr-1" />
+                <DynamicIcon name="zap" className="w-4 h-4 mr-1" />
                 Quality positions only
               </span>
             </div>
