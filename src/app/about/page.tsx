@@ -166,7 +166,7 @@ export default function AboutPage() {
         <p className="text-gray-300 mb-6">
           Ready to swipe your way to a new career?{' '}
           <Link
-            href="/get-started"
+            href="#app-download"
             className="underline underline-offset-2 hover:text-gray-100 transition-colors font-semibold"
           >
             Get started with TheOGs

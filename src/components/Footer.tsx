@@ -31,7 +31,7 @@ const socialMediaLinks: SocialMediaLink[] = [
     href: 'https://www.instagram.com/theogsapp',
     icon: 'instagram',
   },
-  { name: 'Twitter', href: 'https://x.com/gs_the71504', icon: 'twitter' },
+  { name: 'Twitter', href: 'https://x.com/theogsapp', icon: 'twitter' },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/company/theogsapp',

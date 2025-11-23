@@ -86,8 +86,6 @@ export default function ContactPage() {
     },
   });
 
-  console.log(formik.isSubmitting);
-
   return (
     <div className="animate-fade-in-scale max-w-4xl mx-auto bg-black text-white p-10 border border-gray-800 shadow-xl">
       <ToastContainer />

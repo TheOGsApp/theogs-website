@@ -10,6 +10,10 @@ import { appLinks } from '@/constants';
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const hideMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-black/90 text-white">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -95,35 +99,52 @@ export function Header() {
         <Link
           href="/"
           className="block py-2 text-white hover:text-gray-300 transition-colors duration-200"
+          onClick={hideMenu}
         >
           Home
         </Link>
         <Link
           href="/about"
           className="block py-2 text-white hover:text-gray-300 transition-colors duration-200"
+          onClick={hideMenu}
         >
           About
         </Link>
         <Link
           href="/contact"
           className="block py-2 text-white hover:text-gray-300 transition-colors duration-200"
+          onClick={hideMenu}
         >
           Contact
+        </Link>
+        <Link
+          href="#socials"
+          className="hover:text-gray-300 transition-colors duration-200"
+          onClick={hideMenu}
+        >
+          Follow Us
         </Link>
 
         {/* App Links */}
         <div className="flex flex-col space-y-2 mt-4">
-          {appLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity"
-            >
-              <Image src={link.imgSrc} alt={link.alt} width={150} height={50} />
-            </a>
-          ))}
+          {appLinks
+            .filter((link) => link.published)
+            .map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+              >
+                <Image
+                  src={link.imgSrc}
+                  alt={link.alt}
+                  width={150}
+                  height={50}
+                />
+              </a>
+            ))}
         </div>
       </nav>
     </header>
