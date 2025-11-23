@@ -46,6 +46,12 @@ export function Header() {
           >
             Contact
           </Link>
+          <Link
+            href="#socials"
+            className="hover:text-gray-300 transition-colors duration-200"
+          >
+            Follow Us
+          </Link>
 
           {/* App Links */}
           <div className="flex space-x-4 ml-4">

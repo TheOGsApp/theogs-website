@@ -75,7 +75,7 @@ export function Footer() {
           </div>
 
           {/* Socials */}
-          <div>
+          <div id="socials">
             <h3 className="text-xl font-playfair font-semibold mb-4">
               Follow Us
             </h3>
