@@ -1,10 +1,18 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { Geist } from 'next/font/google';
+
 import { Footer, Header } from '@/components';
+import CookieConsentModal from '@/components/CookieConsentModal';
 
 export const metadata: Metadata = {
   title: 'TheOGs',
 };
+
+const geist = Geist({
+  subsets: ['latin'],
+  fallback: ['inter', 'sans-serif'],
+});
 
 export default function RootLayout({
   children,
@@ -12,14 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={geist.className}>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap"
-          rel="stylesheet"
-        />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -70,6 +74,7 @@ export default function RootLayout({
 
         {/* Footer */}
         <Footer />
+        <CookieConsentModal />
       </body>
     </html>
   );
