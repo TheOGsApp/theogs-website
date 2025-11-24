@@ -9,7 +9,7 @@ export const appLinks = [
   {
     id: 'google-play',
     published: true,
-    href: 'https://play.google.com/store/apps/details?id=com.jobmatch.app', // Replace with your Google Play link
+    href: 'https://play.google.com/store/apps/details?id=com.theogs', // Replace with your Google Play link
     imgSrc: '/playstore.png', // Add Google Play badge in the public folder
     alt: 'Get it on Google Play',
   },
