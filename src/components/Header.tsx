@@ -7,6 +7,13 @@ import { DynamicIcon } from 'lucide-react/dynamic';
 
 import { appLinks } from '@/constants';
 
+const menuItems = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+  { name: 'Follow Us', href: '#socials' },
+];
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -32,30 +39,15 @@ export function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-8 text-sm uppercase tracking-wide font-semibold items-center">
-          <Link
-            href="/"
-            className="hover:text-gray-300 transition-colors duration-200"
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            className="hover:text-gray-300 transition-colors duration-200"
-          >
-            About
-          </Link>
-          <Link
-            href="/contact"
-            className="hover:text-gray-300 transition-colors duration-200"
-          >
-            Contact
-          </Link>
-          <Link
-            href="#socials"
-            className="hover:text-gray-300 transition-colors duration-200"
-          >
-            Follow Us
-          </Link>
+          {menuItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="hover:text-gray-300 transition-colors duration-200"
+            >
+              {item.name}
+            </Link>
+          ))}
 
           {/* App Links */}
           <div className="flex space-x-4 ml-4">
@@ -96,34 +88,16 @@ export function Header() {
           isMenuOpen ? 'max-h-[400px] py-4' : 'max-h-0'
         }`}
       >
-        <Link
-          href="/"
-          className="block py-2 text-white hover:text-gray-300 transition-colors duration-200"
-          onClick={hideMenu}
-        >
-          Home
-        </Link>
-        <Link
-          href="/about"
-          className="block py-2 text-white hover:text-gray-300 transition-colors duration-200"
-          onClick={hideMenu}
-        >
-          About
-        </Link>
-        <Link
-          href="/contact"
-          className="block py-2 text-white hover:text-gray-300 transition-colors duration-200"
-          onClick={hideMenu}
-        >
-          Contact
-        </Link>
-        <Link
-          href="#socials"
-          className="hover:text-gray-300 transition-colors duration-200"
-          onClick={hideMenu}
-        >
-          Follow Us
-        </Link>
+        {menuItems.map((item) => (
+          <Link
+            key={item.name}
+            href={item.href}
+            className="block py-2 text-white hover:text-gray-300 transition-colors duration-200"
+            onClick={hideMenu}
+          >
+            {item.name}
+          </Link>
+        ))}
 
         {/* App Links */}
         <div className="flex flex-col space-y-2 mt-4">
