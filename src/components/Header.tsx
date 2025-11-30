@@ -10,7 +10,7 @@ import { appLinks } from '@/constants';
 const menuItems = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Talk to Us', href: '/contact' },
   { name: 'Follow Us', href: '#socials' },
 ];
 

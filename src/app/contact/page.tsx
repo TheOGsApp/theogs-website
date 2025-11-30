@@ -12,21 +12,14 @@ interface Reason {
 }
 
 const reasons: Reason[] = [
+  { value: 'bug', label: 'Report a Bug' },
+  { value: 'collaboration', label: 'Collaboration' },
+  { value: 'careers', label: 'Careers' },
+  { value: 'deactivation', label: 'Account Deactivation' },
+  { value: 'feature', label: 'Feature Request' },
+  { value: 'feedback', label: 'Feedback' },
   { value: 'general', label: 'General Inquiry' },
   { value: 'support', label: 'Support' },
-  { value: 'feedback', label: 'Feedback' },
-  { value: 'partnership', label: 'Partnership' },
-  { value: 'sponsorship', label: 'Sponsorship' },
-  { value: 'events', label: 'Event Inquiry' },
-  { value: 'collaboration', label: 'Collaboration' },
-  { value: 'invest', label: 'Invest' },
-  { value: 'careers', label: 'Careers' },
-  { value: 'sales', label: 'Sales' },
-  { value: 'media', label: 'Media Inquiry' },
-  { value: 'feature', label: 'Feature Request' },
-  { value: 'bug', label: 'Report a Bug' },
-  { value: 'disactivation', label: 'Account Deactivation' },
-  { value: 'other', label: 'Other' },
 ];
 
 const validationSchema = Yup.object({
@@ -90,7 +83,7 @@ export default function ContactPage() {
     <div className="animate-fade-in-scale max-w-4xl mx-auto bg-black text-white p-10 border border-gray-800 shadow-xl">
       <ToastContainer />
       <h1 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-center">
-        <span className="text-gray-400">Contact</span> TheOGs
+        <span className="text-gray-400">Talk to us</span>
       </h1>
 
       <p className="text-gray-300 mb-10 text-center leading-relaxed">
@@ -141,7 +134,7 @@ export default function ContactPage() {
             id="email"
             name="email"
             type="email"
-            placeholder="you@example.com"
+            placeholder="Type your email address"
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -164,7 +157,7 @@ export default function ContactPage() {
             id="phone"
             name="phone"
             type="tel"
-            placeholder="Your phone number with country code"
+            placeholder="Type your phone number (optional)"
             value={formik.values.phone}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}

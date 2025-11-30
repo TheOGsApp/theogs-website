@@ -47,9 +47,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* About */}
           <div>
-            <h3 className="text-xl font-playfair font-semibold mb-4">
-              About TheOGs
-            </h3>
+            <h3 className="text-xl font-semibold mb-4">About TheOGs</h3>
             <p className="text-sm text-gray-500 leading-relaxed">
               TheOGs connects proven developers with top-tier opportunities at
               unicorns, leading startups, and respected tech companies. We cut
@@ -59,10 +57,10 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="text-xl font-playfair font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2 text-sm text-gray-500">
+            <h3 className="text-xl font-semibold mb-4">Legal</h3>
+            <ul className="text-sm text-gray-500 leading-relaxed">
               {legalLinks.map((link, i) => (
-                <li key={i}>
+                <li key={i} className="mb-1">
                   <Link
                     href={link.href}
                     className="hover:text-black transition-colors"
@@ -104,7 +102,7 @@ export function Footer() {
             <h3 className="text-xl font-playfair font-semibold mb-4">
               Contact
             </h3>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-500">
               Email:{' '}
               <a
                 href={`mailto:${appConfig.supportEmail}`}
