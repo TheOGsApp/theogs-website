@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { DynamicIcon } from 'lucide-react/dynamic';
+import Image from "next/image";
 
 const devWords = [
   'async/await',
@@ -513,6 +514,72 @@ export function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      {/* JustMatch Section */}
+      <section className="relative py-24 px-6 bg-[#0a0a0a] overflow-hidden">
+
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20 -z-10"
+          style={{
+            backgroundImage: "url('/assets/bg.png')",
+          }}
+        />
+
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-white">
+            Get the OGs App
+          </h2>
+
+          <div className="relative flex justify-center items-center min-h-[600px]">
+
+
+            <div className="absolute -left-12 top-1/2 -translate-y-1/2 -rotate-12 
+                            w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
+
+              <div className="w-full h-full rounded-[45px] overflow-hidden relative">
+                <Image src= "/Left.jpg" alt="phone" width={400} height={800} className="w-full h-full object-cover" />
+
+
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 
+                                w-[130px] h-[35px] bg-black rounded-full z-10" />
+              </div>
+            </div>
+
+            
+            <div className="max-w-md mx-auto text-center z-20">
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                For you as a talent, TheOGs is completely free — and incredibly helpful.
+                Download the app and get started instantly.
+              </p>
+
+              <div className="flex justify-center gap-4 cursor-pointer">
+                <img
+                  src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                  alt="ios app store"
+                  className="h-12 hover:scale-105 transition-transform"
+                />
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                  alt="android play store"
+                  className="h-12 hover:scale-105 transition-transform"
+                />
+              </div>
+            </div>
+
+            <div className="absolute -right-12 top-1/2 -translate-y-1/2 rotate-12 
+                            w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
+
+              <div className="w-full h-full rounded-[45px] overflow-hidden relative">
+                <Image src="/Left.jpg" alt="phone" width={400} height={800} unoptimized className="w-full h-full object-cover" />
+
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 
+                                w-[130px] h-[35px] bg-black rounded-full z-10" />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
