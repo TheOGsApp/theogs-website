@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { DynamicIcon, IconName } from 'lucide-react/dynamic';
+import Image from 'next/image';
 
 import { appConfig } from '@/config';
 import { AppDownloadSection } from './AppDownloadSection';
@@ -22,20 +22,34 @@ const legalLinks = [
 interface SocialMediaLink {
   name: string;
   href: string;
-  icon: IconName;
+  imageUrl: string;
 }
 
 const socialMediaLinks: SocialMediaLink[] = [
   {
+    name: 'Facebook',
+    href: 'https://www.facebook.com/theogsapp',
+    imageUrl: '/social/facebook.png',
+  },
+  {
     name: 'Instagram',
     href: 'https://www.instagram.com/theogsapp',
-    icon: 'instagram',
+    imageUrl: '/social/instagram.png',
   },
-  { name: 'Twitter', href: 'https://x.com/theogsapp', icon: 'twitter' },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/company/theogsapp',
-    icon: 'linkedin',
+    imageUrl: '/social/linkedin.png',
+  },
+  {
+    name: 'Twitter',
+    href: 'https://x.com/theogsapp',
+    imageUrl: '/social/x.jpg',
+  },
+  {
+    name: 'Reddit',
+    href: 'https://www.reddit.com/r/theogsapp',
+    imageUrl: '/social/reddit.png',
   },
 ];
 
@@ -87,10 +101,12 @@ export function Footer() {
                   className="hover:text-blue-600 transition-colors"
                   aria-label={social.name}
                 >
-                  <DynamicIcon
-                    name={social.icon}
-                    size={24}
-                    className="text-gray-700 hover:text-blue-600 transition-colors"
+                  <Image
+                    alt={social.name}
+                    src={social.imageUrl}
+                    width={80}
+                    height={80}
+                    className="hover:scale-150 transition-transform object-contain rounded-full"
                   />
                 </a>
               ))}

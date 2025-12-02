@@ -2,6 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { DynamicIcon } from 'lucide-react/dynamic';
+import Image from 'next/image';
+
+import { appLinks } from '@/constants';
 
 const devWords = [
   'async/await',
@@ -216,6 +219,74 @@ export function HomePage() {
                   <li>• Quality over quantity</li>
                   <li>• Better long-term hires</li>
                 </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-24 px-6 bg-[#0a0a0a] overflow-hidden">
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <div className="relative flex justify-center items-center min-h-[600px]">
+            <div className="absolute -left-12 top-1/2 -translate-y-1/2 -rotate-12 w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
+              <div className="w-full h-full rounded-[45px] overflow-hidden relative">
+                <Image
+                  src="/applicant.png"
+                  alt="phone"
+                  width={400}
+                  height={800}
+                  className="w-full h-full object-cover"
+                />
+
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[130px] h-[35px] bg-black rounded-full z-10" />
+              </div>
+            </div>
+
+            <div className="max-w-md mx-auto text-center z-20">
+              <h2 className="text-4xl md:text-5xl font-bold mb-12 text-white">
+                Get TheOGs App
+              </h2>
+
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                For you as a talent, TheOGs is completely free — and incredibly
+                helpful. Download the app and get started instantly.
+              </p>
+
+              <div className="flex justify-center gap-4 cursor-pointer">
+                {appLinks
+                  .filter((link) => link.published)
+                  .map((link) => (
+                    <a
+                      key={link.alt}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src={link.imgSrc}
+                        alt={link.alt}
+                        width={150}
+                        height={30}
+                        unoptimized
+                        className="object-cover"
+                      />
+                    </a>
+                  ))}
+              </div>
+            </div>
+
+            <div className="absolute -right-12 top-1/2 -translate-y-1/2 rotate-12  w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
+              <div className="w-full h-full rounded-[45px] overflow-hidden relative">
+                <Image
+                  src="/job.png"
+                  alt="phone"
+                  width={400}
+                  height={800}
+                  unoptimized
+                  className="w-full h-full object-cover"
+                />
+
+                <div className="absolute top-3 left-1/2 -translate-x-1/2  w-[130px] h-[35px] bg-black rounded-full z-10" />
               </div>
             </div>
           </div>
@@ -565,6 +636,13 @@ export function HomePage() {
             </div>
           </div>
         </div>
+      </section>
+      {/* Background Video */}
+      <section className="flex justify-center w-full">
+        <video autoPlay loop muted className="w-full h-full object-contain">
+          <source src="/theogs.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </section>
     </div>
   );
