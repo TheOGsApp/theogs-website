@@ -39,7 +39,7 @@ const socialMediaLinks: SocialMediaLink[] = [
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/company/theogsapp',
-    imageUrl: '/social/linkedin.png',
+    imageUrl: '/social/linkedIn.png',
   },
   {
     name: 'Twitter',

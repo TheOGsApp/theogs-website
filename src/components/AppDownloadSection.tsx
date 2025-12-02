@@ -34,7 +34,7 @@ export function AppDownloadSection() {
           <p className="text-xs text-gray-500 mb-1">
             Tech experts, listen up. If you want real opportunities, better
             roles, or a place where your experience actually matters, OGs is for
-            you.This is the home for senior talent only.
+            you.This is the home for experienced talent only.
           </p>
           <p className="text-xs text-gray-500 mb-4">
             OGs brings you curated jobs from trusted companies with no noise and

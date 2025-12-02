@@ -76,8 +76,8 @@ export function HomePage() {
           </div>
 
           <h2 className="text-xl md:text-4xl font-light text-gray-300 mb-8 leading-tight">
-            OGs is the space for senior tech professionals who want meaningful
-            roles, not clutter.{' '}
+            OGs is the space for experienced tech professionals who want
+            meaningful roles, not clutter.{' '}
             <span className="font-bold text-white relative">
               Here, your experience is valued and every job is curated.
             </span>
@@ -176,7 +176,7 @@ export function HomePage() {
                   Developers Avoid:
                 </h3>
                 <ul className="text-gray-300 space-y-2">
-                  <li>• Mislabelled &quot;senior&quot; positions</li>
+                  <li>• Mislabelled &quot;experienced&quot; positions</li>
                   <li>• Hidden salary ranges</li>
                   <li>• Unnecessary hoops & irrelevant tests</li>
                   <li>• Roles that don&apos;t fit your expertise</li>
