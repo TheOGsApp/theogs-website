@@ -208,7 +208,7 @@ export function HomePage() {
 
       <section className="relative py-24 px-6 bg-[#0a0a0a] overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="relative flex justify-center items-center gap-4 min-h-[600px]">
+          <div className="relative flex flex-col md:flex-row justify-center items-center gap-4 min-h-[600px]">
             <div className="md:absolute -left-12 top-1/2 md:-translate-y-1/2 md:-rotate-12 w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
               <div className="w-full h-full rounded-[45px] overflow-hidden relative">
                 <Image
