@@ -28,7 +28,7 @@ const devWords = [
 const floatingWord = (word: string, delay: number) => (
   <div
     key={word}
-    className="absolute text-slate-500 text-sm font-mono opacity-20 animate-pulse"
+    className="absolute text-slate-500 text-sm font-mono opacity-15 animate-pulse"
     style={{
       left: `${Math.floor(Math.random() * 80 + 10)}%`,
       top: `${Math.floor(Math.random() * 80 + 10)}%`,
@@ -67,29 +67,23 @@ export function HomePage() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-6 text-white">
-            TheOGs
+          <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-8 text-white leading-tight">
+            Your Experience
+            <span className="ml-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Speaks
+            </span>
           </h1>
-
-          <div className="relative mb-8">
-            <div className="w-24 h-[3px] bg-white mx-auto" />
-          </div>
-
-          <h2 className="text-xl md:text-4xl font-light text-gray-300 mb-8 leading-tight">
+          {/* <h2 className="text-xl md:text-4xl font-light text-gray-300 mb-8 leading-tight">
             OGs is the space for experienced tech professionals who want
             meaningful roles, not clutter.{' '}
             <span className="font-bold text-white relative">
               Here, your experience is valued and every job is curated.
             </span>
-          </h2>
+          </h2> */}
 
-          <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            Trusted companies, real openings, no distractions.{' '}
-            <span className="text-white font-medium mx-2">
-              Only opportunities that match your level.
-            </span>{' '}
-            If you are an OG in your field, this is where you belong. Find the
-            perfect fit for your next chapter.
+          <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-16 font-light leading-relaxed">
+            No resume. No cover letter. No nonsense. Just your work, real
+            companies, and opportunities that actually fit.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
@@ -98,23 +92,10 @@ export function HomePage() {
               onClick={navToAppLinks}
             >
               <span className="flex items-center justify-center">
-                Explore Opportunities
+                Join TheOGs
                 <DynamicIcon
                   name="arrow-right"
                   className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
-                />
-              </span>
-            </button>
-
-            <button
-              className="group px-12 py-4 border-2 border-gray-600 text-white font-bold text-lg rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-300 transform hover:scale-105"
-              onClick={navToAppLinks}
-            >
-              <span className="flex items-center justify-center">
-                Learn More
-                <DynamicIcon
-                  name="chevron-down"
-                  className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform"
                 />
               </span>
             </button>
@@ -227,8 +208,8 @@ export function HomePage() {
 
       <section className="relative py-24 px-6 bg-[#0a0a0a] overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="relative flex justify-center items-center min-h-[600px]">
-            <div className="absolute -left-12 top-1/2 -translate-y-1/2 -rotate-12 w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
+          <div className="relative flex justify-center items-center gap-4 min-h-[600px]">
+            <div className="md:absolute -left-12 top-1/2 md:-translate-y-1/2 md:-rotate-12 w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
               <div className="w-full h-full rounded-[45px] overflow-hidden relative">
                 <Image
                   src="/applicant.png"
@@ -275,7 +256,7 @@ export function HomePage() {
               </div>
             </div>
 
-            <div className="absolute -right-12 top-1/2 -translate-y-1/2 rotate-12  w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
+            <div className="md:absolute -right-12 top-1/2 md:-translate-y-1/2 md:rotate-12  w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
               <div className="w-full h-full rounded-[45px] overflow-hidden relative">
                 <Image
                   src="/job.png"
