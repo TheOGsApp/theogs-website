@@ -48,10 +48,10 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Vinay',
-    role: 'Co-founder & CCO',
+    role: 'Chief Cloud Officer',
     image: '/team/vinay.jpeg',
     description:
-      'A cloud technology innovator, Vinay is dedicated to building cutting-edge solutions that leverage the power of the cloud. As Co-founder and CCO, he’s shaping the future of cloud-based systems to drive efficiency and innovation.',
+      'A cloud technology innovator, Vinay is dedicated to building cutting-edge solutions that leverage the power of the cloud. As a Chief Cloud Officer, he’s shaping the future of cloud-based systems to drive efficiency and innovation.',
     socialMediaLinks: [
       {
         platform: 'LinkedIn',

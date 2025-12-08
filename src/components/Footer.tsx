@@ -46,11 +46,6 @@ const socialMediaLinks: SocialMediaLink[] = [
     href: 'https://x.com/theogsapp',
     imageUrl: '/social/x.jpg',
   },
-  {
-    name: 'Reddit',
-    href: 'https://www.reddit.com/r/theogsapp',
-    imageUrl: '/social/reddit.png',
-  },
 ];
 
 export function Footer() {
