@@ -67,7 +67,7 @@ export function HomePage() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-8 text-white leading-tight">
+          <h1 className="text-4xl md:text-7xl font-black tracking-tight mb-8 text-white wrap-break-word whitespace-break-spaces">
             Your Experience
             <span className="ml-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Speaks
@@ -620,7 +620,12 @@ export function HomePage() {
       </section>
       {/* Background Video */}
       <section className="flex justify-center w-full">
-        <video autoPlay loop muted className="w-full h-full object-contain">
+        <video
+          autoPlay
+          loop
+          muted
+          className="w-full h-full object-contain max-w-5xl"
+        >
           <source src="/theogs.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
