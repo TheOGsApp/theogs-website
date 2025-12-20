@@ -99,8 +99,8 @@ export function Footer() {
                   <Image
                     alt={social.name}
                     src={social.imageUrl}
-                    width={80}
-                    height={80}
+                    width={30}
+                    height={50}
                     className="hover:scale-150 transition-transform object-contain rounded-full"
                   />
                 </a>

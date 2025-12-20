@@ -5,53 +5,16 @@ import { DynamicIcon } from 'lucide-react/dynamic';
 import Image from 'next/image';
 
 import { appLinks } from '@/constants';
-
-const devWords = [
-  'async/await',
-  'Microservices',
-  'Kubernetes',
-  'React Hooks',
-  'GraphQL',
-  'Docker',
-  'CI/CD',
-  'Typescript',
-  'Redis',
-  'Postgres',
-  'Mongodb',
-  'REST APIs',
-  'Websockets',
-  'Serverless',
-  'Terraform',
-  'Jenkins',
-];
-
-const floatingWord = (word: string, delay: number) => (
-  <div
-    key={word}
-    className="absolute text-slate-500 text-sm font-mono opacity-15 animate-pulse"
-    style={{
-      left: `${Math.floor(Math.random() * 80 + 10)}%`,
-      top: `${Math.floor(Math.random() * 80 + 10)}%`,
-      animationDelay: `${delay}s`,
-      animationDuration: `${3 + Math.random() * 2}s`,
-    }}
-  >
-    {word}
-  </div>
-);
+import { useAuthStore } from '@/store';
+import { FloatingWords } from './FloatingWords';
 
 export function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
+  const { setOpen } = useAuthStore();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
-  const navToAppLinks = () => {
-    document
-      .getElementById('app-download')
-      ?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
@@ -59,7 +22,7 @@ export function HomePage() {
       <section className="relative min-h-screen flex items-center justify-center px-4">
         {/* Floating Dev Words Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {devWords.map((word, i) => floatingWord(word, i * 0.5))}
+          <FloatingWords />
         </div>
 
         <div
@@ -89,7 +52,7 @@ export function HomePage() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
             <button
               className="group px-12 py-4 bg-white text-black font-bold text-lg rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-2xl"
-              onClick={navToAppLinks}
+              onClick={() => setOpen(true)}
             >
               <span className="flex items-center justify-center">
                 Join TheOGs
@@ -588,7 +551,7 @@ export function HomePage() {
           <div className="space-y-6">
             <button
               className="group px-16 py-5 bg-white text-black font-bold text-xl rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-2xl"
-              onClick={navToAppLinks}
+              onClick={() => setOpen(true)}
             >
               <span className="flex items-center justify-center">
                 Join TheOGs

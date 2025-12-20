@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { DynamicIcon } from 'lucide-react/dynamic';
 
 import { appLinks } from '@/constants';
+import { LoginModal } from './LoginModal';
 
 const menuItems = [
   { name: 'Home', href: '/' },
@@ -23,6 +24,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-black/90 text-white">
+      <LoginModal />
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Brand */}
         <h1 className="text-2xl font-playfair font-bold tracking-tight">
