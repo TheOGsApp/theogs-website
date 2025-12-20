@@ -12,6 +12,7 @@ import {
 import { api } from '@/api';
 import { useApplicantStore } from '../applicant';
 import { useRecruiterStore } from '../recruiter';
+import { m } from 'framer-motion';
 
 export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
   (set, get) => ({
@@ -22,6 +23,7 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
     email: '',
     otp: '',
     userType: UserType.Applicant,
+    showRequirementsModal: false,
 
     isApplicant: () => {
       return get().userType === UserType.Applicant;
@@ -37,6 +39,7 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
     setStep: (step) => set({ step }),
     setUserType: (userType) => set({ userType }),
     setEmail: (email) => set({ email }),
+    setShowRequirementsModal: (show) => set({ showRequirementsModal: show }),
 
     sendOTP: () => {
       return new Promise<void>((resolve) => {
@@ -53,9 +56,7 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
           })
           .then((response) => {
             if (response.data.userDoesNotExist) {
-              message.warning(
-                `No account found for ${email}. Please create a profile.`,
-              );
+              set({ showRequirementsModal: true, open: false });
               return;
             }
             if (response.data.accessToken) {
@@ -84,14 +85,25 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
           : '/recruiters/verify-otp';
 
         api
-          .post<VerifyOTPResponse>(path, {
-            email,
-            otp,
-          })
+          .post<VerifyOTPResponse>(
+            path,
+            {
+              otp,
+              loginFrom: 'website',
+            },
+            {
+              headers: {
+                ...getTokenHeaders(get().accessToken),
+              },
+            },
+          )
           .then((response) => {
             if (response.data.accessToken) {
               set({ accessToken: response.data.accessToken, open: false });
               message.success('OTP verified successfully');
+              message.success(
+                'Creating forms will be shortly available. For now, you can download TheOGs app from the Play Store or App Store to complete your profile.',
+              );
 
               if (response.data.applicant) {
                 useApplicantStore
@@ -117,7 +129,41 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
       });
     },
     createProfile: () => {
-      return new Promise<void>((resolve) => {});
+      return new Promise<void>((resolve) => {
+        set({ loading: true });
+
+        const { isApplicant, email } = get();
+
+        const path = isApplicant() ? '/applicants' : '/recruiters';
+
+        api
+          .post(path, {
+            email,
+            createdFrom: 'website',
+          })
+          .then((response) => {
+            if (response.data.accessToken) {
+              set({
+                accessToken: response.data.accessToken,
+                showRequirementsModal: false,
+                open: true,
+                step: 'otp',
+              });
+              message.success(
+                'Your profile has been created successfully and OTP sent to your email. Please verify to continue.',
+              );
+            }
+          })
+          .catch(() => {
+            message.error(
+              'Error while creating profile, please try again later.',
+            );
+          })
+          .finally(() => {
+            set({ loading: false });
+            resolve();
+          });
+      });
     },
     closeModal: () => {
       set({
@@ -129,3 +175,7 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
     },
   }),
 );
+
+const getTokenHeaders = (token: string) => ({
+  Authorization: `Bearer ${token}`,
+});

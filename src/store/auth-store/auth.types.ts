@@ -23,6 +23,7 @@ export interface VerifyOTPResponse {
 
 export interface AuthState {
   open: boolean;
+  showRequirementsModal: boolean;
   accessToken: string;
   loading: boolean;
   step: 'email' | 'otp';
@@ -43,6 +44,7 @@ export interface AuthActions {
   setEmail: (email: string) => void;
   setOTP: (otp: string) => void;
   setLoading: (loading: boolean) => void;
+  setShowRequirementsModal: (show: boolean) => void;
 
   sendOTP: () => Promise<void>;
   verifyOTP: (otp: string) => Promise<void>;
