@@ -109,8 +109,10 @@ export interface Applicant {
 
 export interface ApplicantState {
   applicant?: Applicant;
+  loading: boolean;
 }
 
 export interface ApplicantActions {
   setApplicant: (applicant: Applicant) => void;
+  setLoading: (loading: boolean) => void;
 }

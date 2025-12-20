@@ -18,15 +18,13 @@ export const LoginModal = () => {
     closeModal,
   } = useAuthStore();
 
-  const [emailForm] = Form.useForm();
-  const [otpForm] = Form.useForm();
-
   return (
     <Modal
       open={open}
+      destroyOnHidden
       onCancel={closeModal}
       footer={null}
-      confirmLoading={loading}
+      loading={loading}
     >
       <Typography.Title level={4} className="pb-4">
         Welcome To TheOGs!
@@ -44,7 +42,7 @@ export const LoginModal = () => {
             <Radio value={UserType.Recruiter}>Recruiter</Radio>
           </Radio.Group>
 
-          <Form form={emailForm} layout="vertical" onFinish={sendOTP}>
+          <Form layout="vertical" onFinish={sendOTP}>
             <Form.Item
               label={isRecruiter() ? 'Work Email' : 'Email'}
               name="email"
@@ -89,7 +87,7 @@ export const LoginModal = () => {
 
       {/* OTP STEP */}
       {step === 'otp' && (
-        <Form form={otpForm} layout="vertical" onFinish={verifyOTP}>
+        <Form layout="vertical" onFinish={verifyOTP}>
           <Form.Item
             label="Enter OTP"
             name="otp"
@@ -110,7 +108,6 @@ export const LoginModal = () => {
                 // allow only numbers
                 const numericValue = value.replace(/\D/g, '');
                 setOTP(numericValue);
-                otpForm.setFieldsValue({ otp: numericValue });
               }}
               size="middle"
             />

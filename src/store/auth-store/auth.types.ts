@@ -1,10 +1,29 @@
+import { Applicant } from '../applicant';
+import { Recruiter } from '../recruiter';
+
 export enum UserType {
   Recruiter = 'Recruiter',
   Applicant = 'Applicant',
 }
 
+export interface SendOTPResponse {
+  accessToken: string;
+  otp: string;
+  isNewUser: boolean;
+  userDoesNotExist: boolean;
+  deactivated: boolean;
+  banned: boolean;
+}
+
+export interface VerifyOTPResponse {
+  accessToken: string;
+  applicant: Applicant;
+  recruiter: Recruiter;
+}
+
 export interface AuthState {
   open: boolean;
+  accessToken: string;
   loading: boolean;
   step: 'email' | 'otp';
   userType: UserType;
