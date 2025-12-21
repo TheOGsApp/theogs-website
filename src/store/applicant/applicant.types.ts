@@ -24,8 +24,8 @@ export interface ApplicantJob {
   company: string;
   startDate: string;
   endDate?: string;
-  isCurrent?: boolean; // true if this is the current job
-  address: Address;
+  location: string;
+  isCurrent?: boolean;
   verified?: boolean;
   type: JobType;
 }

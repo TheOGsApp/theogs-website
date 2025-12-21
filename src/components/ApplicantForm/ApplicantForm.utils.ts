@@ -5,6 +5,7 @@ import { Applicant, JobType } from '@/store';
 const jobValidationSchema = Yup.object({
   title: Yup.string().trim().required('Job title is required'),
   company: Yup.string().trim().required('Company is required'),
+  location: Yup.string().trim().required('Location is required'),
   startDate: Yup.date()
     .typeError('Start date is required')
     .required('Start date is required'),

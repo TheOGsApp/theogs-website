@@ -311,6 +311,30 @@ export default function ApplicantForm() {
                           </Form.Item>
 
                           <Form.Item
+                            label="Location"
+                            layout="vertical"
+                            required
+                            validateStatus={
+                              touched?.location && errors?.location
+                                ? 'error'
+                                : ''
+                            }
+                            help={touched?.location && errors?.location}
+                          >
+                            <Input
+                              placeholder="Silicon Valley, CA, USA"
+                              variant="filled"
+                              value={job.location}
+                              onChange={(e) =>
+                                formik.setFieldValue(
+                                  `${base}.location`,
+                                  e.target.value,
+                                )
+                              }
+                            />
+                          </Form.Item>
+
+                          <Form.Item
                             required
                             label="Job Type"
                             layout="vertical"
