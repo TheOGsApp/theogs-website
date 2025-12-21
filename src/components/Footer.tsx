@@ -19,6 +19,8 @@ const legalLinks = [
   },
 ];
 
+const productLinks = [{ name: 'How it works', href: '/how-it-works' }];
+
 interface SocialMediaLink {
   name: string;
   href: string;
@@ -53,7 +55,7 @@ export function Footer() {
     <footer className="border-t border-gray-800 py-16">
       <AppDownloadSection />
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* About */}
           <div>
             <h3 className="text-xl font-semibold mb-4">About TheOGs</h3>
@@ -62,6 +64,21 @@ export function Footer() {
               unicorns, leading startups, and respected tech companies. We cut
               the noise so skilled talent and great companies connect faster.
             </p>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Product</h3>
+            <ul className="text-sm text-gray-500 leading-relaxed">
+              {productLinks.map((link, i) => (
+                <li key={i} className="mb-1">
+                  <Link
+                    href={link.href}
+                    className="hover:text-black transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Legal */}
