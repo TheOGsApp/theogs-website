@@ -1,6 +1,7 @@
 import { Modal, Radio, Input, Button, Form, Typography } from 'antd';
 import { useAuthStore, UserType } from '@/store';
 import { RequirementsModal } from './RequirementsModal';
+import { OnboardingModal } from './OnboardingModal';
 
 export const LoginModal = () => {
   const {
@@ -31,6 +32,7 @@ export const LoginModal = () => {
         onClose={() => setShowRequirementsModal(false)}
         userType={userType}
       />
+      <OnboardingModal />
       <Modal
         open={open}
         destroyOnHidden

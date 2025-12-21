@@ -12,7 +12,6 @@ import {
 import { api } from '@/api';
 import { useApplicantStore } from '../applicant';
 import { useRecruiterStore } from '../recruiter';
-import { m } from 'framer-motion';
 
 export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
   (set, get) => ({
@@ -24,6 +23,7 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
     otp: '',
     userType: UserType.Applicant,
     showRequirementsModal: false,
+    showOnboardingModal: false,
 
     isApplicant: () => {
       return get().userType === UserType.Applicant;
@@ -35,6 +35,8 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
 
     setOTP: (otp) => set({ otp }),
     setLoading: (loading) => set({ loading }),
+    setShowOnboardingModal: (showOnboardingModal) =>
+      set({ showOnboardingModal }),
     setOpen: (open) => set({ open }),
     setStep: (step) => set({ step }),
     setUserType: (userType) => set({ userType }),
@@ -78,7 +80,7 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
       return new Promise<void>((resolve) => {
         set({ loading: true });
 
-        const { isApplicant, email, otp } = get();
+        const { isApplicant, otp } = get();
 
         const path = isApplicant()
           ? '/applicants/verify-otp'
@@ -101,9 +103,6 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
             if (response.data.accessToken) {
               set({ accessToken: response.data.accessToken, open: false });
               message.success('OTP verified successfully');
-              message.success(
-                'Creating forms will be shortly available. For now, you can download TheOGs app from the Play Store or App Store to complete your profile.',
-              );
 
               if (response.data.applicant) {
                 useApplicantStore
@@ -116,11 +115,16 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
                   .getState()
                   .setRecruiter(response.data.recruiter);
               }
+
+              set({ otp: '', showOnboardingModal: true });
+
+              return;
             }
+
+            message.error('Invalid OTP, please try again.');
           })
-          .catch((error) => {
-            console.error('Error verifying OTP:', error);
-            // Handle error as needed
+          .catch(() => {
+            message.error('Invalid OTP, please try again.');
           })
           .finally(() => {
             set({ loading: false });
