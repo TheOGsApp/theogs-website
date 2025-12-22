@@ -10,14 +10,14 @@ const jobValidationSchema = Yup.object({
     .typeError('Start date is required')
     .required('Start date is required'),
   endDate: Yup.date()
-    .typeError('End date is required')
-    .when('isCurrent', (isCurrent, schema) => {
-      return isCurrent
-        ? schema.nullable()
-        : schema
-            .required('End date is required')
-            .min(Yup.ref('startDate'), 'End date must be after start date')
-            .max(new Date(), 'End date cannot be in the future');
+    .nullable()
+    .when('isCurrent', {
+      is: false,
+      then: (schema) =>
+        schema
+          .required('End date is required')
+          .min(Yup.ref('startDate'), 'End date cannot be before start date'),
+      otherwise: (schema) => schema.notRequired().nullable(),
     }),
   type: Yup.mixed<JobType>()
     .oneOf(Object.values(JobType), 'Invalid job type')
@@ -61,7 +61,7 @@ export const getInitialValues = (applicant?: Applicant) => {
   return {
     name: applicant?.name,
     jobTitle: applicant?.jobTitle,
-    totalYearsOfExperience: applicant?.totalYearsOfExperience ?? 2,
+    totalYearsOfExperience: applicant?.totalYearsOfExperience || 2,
     jobs: applicant?.jobs ?? [],
 
     education: {

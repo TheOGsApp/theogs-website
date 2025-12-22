@@ -25,6 +25,7 @@ export interface AuthState {
   open: boolean;
   showRequirementsModal: boolean;
   showOnboardingModal: boolean;
+  showSuccessModal: boolean;
   accessToken: string;
   loading: boolean;
   step: 'email' | 'otp';
@@ -47,6 +48,7 @@ export interface AuthActions {
   setLoading: (loading: boolean) => void;
   setShowRequirementsModal: (show: boolean) => void;
   setShowOnboardingModal: (showOnboardingModal: boolean) => void;
+  setShowSuccessModal: (showSuccessModal: boolean) => void;
 
   sendOTP: () => Promise<void>;
   verifyOTP: (otp: string) => Promise<void>;

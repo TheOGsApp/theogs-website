@@ -24,6 +24,7 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
     userType: UserType.Applicant,
     showRequirementsModal: false,
     showOnboardingModal: false,
+    showSuccessModal: false,
 
     isApplicant: () => {
       return get().userType === UserType.Applicant;
@@ -42,6 +43,7 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
     setUserType: (userType) => set({ userType }),
     setEmail: (email) => set({ email }),
     setShowRequirementsModal: (show) => set({ showRequirementsModal: show }),
+    setShowSuccessModal: (showSuccessModal) => set({ showSuccessModal }),
 
     sendOTP: () => {
       return new Promise<void>((resolve) => {
@@ -101,7 +103,11 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
           )
           .then((response) => {
             if (response.data.accessToken) {
-              set({ accessToken: response.data.accessToken, open: false });
+              set({
+                accessToken: response.data.accessToken,
+                open: false,
+                step: 'email',
+              });
               message.success('OTP verified successfully');
 
               if (response.data.applicant) {

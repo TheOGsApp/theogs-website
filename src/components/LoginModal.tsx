@@ -2,6 +2,7 @@ import { Modal, Radio, Input, Button, Form, Typography } from 'antd';
 import { useAuthStore, UserType } from '@/store';
 import { RequirementsModal } from './RequirementsModal';
 import { OnboardingModal } from './OnboardingModal';
+import { SuccessModal } from './SuccessModal';
 
 export const LoginModal = () => {
   const {
@@ -21,6 +22,8 @@ export const LoginModal = () => {
     closeModal,
     showRequirementsModal,
     setShowRequirementsModal,
+    showSuccessModal,
+    setShowSuccessModal,
   } = useAuthStore();
 
   return (
@@ -33,6 +36,10 @@ export const LoginModal = () => {
         userType={userType}
       />
       <OnboardingModal />
+      <SuccessModal
+        open={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+      />
       <Modal
         open={open}
         destroyOnHidden

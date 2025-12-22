@@ -1,7 +1,7 @@
 'use client';
 
 import { useFormik, FormikErrors } from 'formik';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   Form,
   Input,
@@ -15,9 +15,11 @@ import {
   Typography,
   Empty,
   message,
+  Collapse,
 } from 'antd';
 import { Trash2, Plus } from 'lucide-react';
 import dayjs from 'dayjs';
+
 import { getInitialValues, validationSchema } from './ApplicantForm.utils';
 import { Applicant, JobType, useApplicantStore } from '@/store';
 
@@ -34,7 +36,7 @@ function isJobErrorObject(
 /* ---------- Component ---------- */
 
 export default function ApplicantForm() {
-  const { applicant } = useApplicantStore();
+  const { applicant, updateProfile } = useApplicantStore();
   const [activeTab, setActiveTab] = useState('1');
 
   const formik = useFormik({
@@ -48,11 +50,14 @@ export default function ApplicantForm() {
           new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
       );
 
-      console.log({
+      updateProfile(applicant!._id, {
         ...values,
         jobs: sortedJobs,
+      }).then((success) => {
+        if (success) {
+          formik.resetForm();
+        }
       });
-      message.success('Application submitted successfully!');
     },
   });
 
@@ -168,7 +173,7 @@ export default function ApplicantForm() {
                     help={getFieldError('jobTitle')}
                   >
                     <Input
-                      placeholder="Desired Job Title"
+                      placeholder="Enter your job title"
                       variant="filled"
                       {...formik.getFieldProps('jobTitle')}
                     />
@@ -222,13 +227,7 @@ export default function ApplicantForm() {
                     />
                   </>
                 ) : (
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '24px',
-                    }}
-                  >
+                  <Collapse accordion>
                     {formik.values.jobs.map((job, index) => {
                       const base = `jobs.${index}`;
                       const touched = formik.touched.jobs?.[index];
@@ -238,38 +237,40 @@ export default function ApplicantForm() {
                         : undefined;
 
                       return (
-                        <Card
+                        <Collapse.Panel
                           key={index}
-                          style={{
-                            backgroundColor: '#fafafa',
-                            border: '1px solid #f0f0f0',
-                          }}
-                        >
-                          <div
-                            style={{
-                              display: 'flex',
-                              justifyContent: 'space-between',
-                              alignItems: 'center',
-                              marginBottom: 16,
-                            }}
-                          >
-                            <Title level={5} style={{ margin: 0 }}>
-                              {job.title || `Position ${index + 1}`}
-                            </Title>
-                            <Button
-                              danger
-                              type="text"
-                              onClick={() => removeJob(index)}
-                              style={{ padding: '4px 8px' }}
+                          header={
+                            <div
+                              style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                width: '100%',
+                              }}
                             >
-                              <Trash2 size={16} />
-                            </Button>
-                          </div>
+                              <Title level={5} style={{ margin: 0 }}>
+                                {job.title || `Position ${index + 1}`}
+                                {job.company ? ` @ ${job.company}` : ''}
+                              </Title>
 
+                              <Button
+                                danger
+                                type="text"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  removeJob(index);
+                                }}
+                                style={{ padding: '4px 8px' }}
+                              >
+                                <Trash2 size={16} />
+                              </Button>
+                            </div>
+                          }
+                        >
                           <Form.Item
                             label="Job Title"
-                            layout="vertical"
                             required
+                            layout="vertical"
                             validateStatus={
                               touched?.title && errors?.title ? 'error' : ''
                             }
@@ -290,8 +291,8 @@ export default function ApplicantForm() {
 
                           <Form.Item
                             label="Company"
-                            layout="vertical"
                             required
+                            layout="vertical"
                             validateStatus={
                               touched?.company && errors?.company ? 'error' : ''
                             }
@@ -312,8 +313,8 @@ export default function ApplicantForm() {
 
                           <Form.Item
                             label="Location"
-                            layout="vertical"
                             required
+                            layout="vertical"
                             validateStatus={
                               touched?.location && errors?.location
                                 ? 'error'
@@ -336,15 +337,14 @@ export default function ApplicantForm() {
 
                           <Form.Item
                             required
-                            label="Job Type"
                             layout="vertical"
+                            label="Job Type"
                             validateStatus={
                               touched?.type && errors?.type ? 'error' : ''
                             }
                             help={touched?.type && errors?.type}
                           >
                             <Select
-                              placeholder="Select job type"
                               value={job.type}
                               onChange={(value) =>
                                 formik.setFieldValue(`${base}.type`, value)
@@ -354,10 +354,7 @@ export default function ApplicantForm() {
                                   label: 'Full Time',
                                   value: JobType.FULL_TIME,
                                 },
-                                {
-                                  label: 'Contract',
-                                  value: JobType.CONTRACT,
-                                },
+                                { label: 'Contract', value: JobType.CONTRACT },
                               ]}
                             />
                           </Form.Item>
@@ -371,8 +368,8 @@ export default function ApplicantForm() {
                           >
                             <Form.Item
                               label="Start Date"
-                              layout="vertical"
                               required
+                              layout="vertical"
                               validateStatus={
                                 touched?.startDate && errors?.startDate
                                   ? 'error'
@@ -385,6 +382,7 @@ export default function ApplicantForm() {
                                 value={
                                   job.startDate ? dayjs(job.startDate) : null
                                 }
+                                maxDate={dayjs()}
                                 onChange={(date) =>
                                   formik.setFieldValue(
                                     `${base}.startDate`,
@@ -408,18 +406,19 @@ export default function ApplicantForm() {
                               <DatePicker
                                 style={{ width: '100%' }}
                                 value={job.endDate ? dayjs(job.endDate) : null}
+                                maxDate={dayjs()}
+                                disabled={job.isCurrent}
                                 onChange={(date) =>
                                   formik.setFieldValue(
                                     `${base}.endDate`,
                                     date?.toISOString() || '',
                                   )
                                 }
-                                disabled={job.isCurrent}
                               />
                             </Form.Item>
                           </div>
 
-                          <Form.Item layout="vertical">
+                          <Form.Item>
                             <Checkbox
                               checked={job.isCurrent}
                               onChange={(e) => {
@@ -447,22 +446,22 @@ export default function ApplicantForm() {
                             help={touched?.description && errors?.description}
                           >
                             <Input.TextArea
-                              placeholder="Describe your responsibilities and achievements..."
+                              rows={3}
+                              maxLength={200}
+                              showCount
                               value={job.description || ''}
-                              maxLength={150}
                               onChange={(e) =>
                                 formik.setFieldValue(
                                   `${base}.description`,
                                   e.target.value,
                                 )
                               }
-                              rows={3}
                             />
                           </Form.Item>
-                        </Card>
+                        </Collapse.Panel>
                       );
                     })}
-                  </div>
+                  </Collapse>
                 )}
 
                 <Divider />
@@ -589,7 +588,7 @@ export default function ApplicantForm() {
       <Divider />
 
       <Button type="primary" onClick={onSubmit} size="large" block>
-        Submit Application
+        Update Profile
       </Button>
     </div>
   );

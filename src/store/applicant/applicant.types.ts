@@ -115,4 +115,9 @@ export interface ApplicantState {
 export interface ApplicantActions {
   setApplicant: (applicant: Applicant) => void;
   setLoading: (loading: boolean) => void;
+
+  updateProfile: (
+    id: string,
+    updatedData: Partial<Applicant>,
+  ) => Promise<boolean>;
 }
