@@ -102,24 +102,22 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
             },
           )
           .then((response) => {
-            if (response.data.accessToken) {
-              set({
-                accessToken: response.data.accessToken,
-                open: false,
-                step: 'email',
-              });
+            const { accessToken, applicant, recruiter } = response.data;
+            if (accessToken) {
+              set({ accessToken, open: false, step: 'email' });
               message.success('OTP verified successfully');
 
-              if (response.data.applicant) {
-                useApplicantStore
-                  .getState()
-                  .setApplicant(response.data.applicant);
+              if (applicant) {
+                if (applicant.isActivelyLooking) {
+                  set({ showSuccessModal: true });
+                  return;
+                }
+
+                useApplicantStore.getState().setApplicant(applicant);
               }
 
-              if (response.data.recruiter) {
-                useRecruiterStore
-                  .getState()
-                  .setRecruiter(response.data.recruiter);
+              if (recruiter) {
+                useRecruiterStore.getState().setRecruiter(recruiter);
               }
 
               set({ otp: '', showOnboardingModal: true });

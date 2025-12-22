@@ -3,6 +3,7 @@ export interface Recruiter {
   name: string;
   email: string;
   jobTitle: string;
+  bio: string;
 }
 
 export interface RecruiterState {

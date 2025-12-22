@@ -195,6 +195,21 @@ export default function ApplicantForm() {
                       {...formik.getFieldProps('totalYearsOfExperience')}
                     />
                   </Form.Item>
+
+                  <Form.Item
+                    required
+                    label="Bio / About You"
+                    validateStatus={getFieldError('bio') ? 'error' : ''}
+                    help={getFieldError('bio')}
+                  >
+                    <Input.TextArea
+                      placeholder="A short bio about you"
+                      variant="filled"
+                      minLength={20}
+                      maxLength={200}
+                      {...formik.getFieldProps('bio')}
+                    />
+                  </Form.Item>
                 </Form>
               </Card>
             ),

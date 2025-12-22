@@ -2,9 +2,11 @@ import { Modal } from 'antd';
 
 import ApplicantForm from './ApplicantForm/ApplicantForm';
 import { useAuthStore } from '@/store';
+import { RecruiterForm } from './RecruiterForm/RecruiterForm';
 
 export function OnboardingModal() {
-  const { showOnboardingModal, setShowOnboardingModal } = useAuthStore();
+  const { showOnboardingModal, setShowOnboardingModal, isApplicant } =
+    useAuthStore();
 
   return (
     <Modal
@@ -13,7 +15,7 @@ export function OnboardingModal() {
       width={800}
       onCancel={() => setShowOnboardingModal(false)}
     >
-      <ApplicantForm />
+      {isApplicant() ? <ApplicantForm /> : <RecruiterForm />}
     </Modal>
   );
 }

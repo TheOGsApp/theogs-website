@@ -33,6 +33,11 @@ const jobValidationSchema = Yup.object({
 export const validationSchema = Yup.object({
   name: Yup.string().trim().required('Name is required'),
   jobTitle: Yup.string().trim().required('Job title is required'),
+  bio: Yup.string()
+    .trim()
+    .required('Bio is required')
+    .max(200, 'Bio cannot exceed 200 characters')
+    .min(20, 'Bio must be at least 20 characters'),
   totalYearsOfExperience: Yup.number()
     .typeError('Total experience must be a number')
     .min(2, 'Minimum 2 years required')
@@ -62,6 +67,7 @@ export const getInitialValues = (applicant?: Applicant) => {
     name: applicant?.name,
     jobTitle: applicant?.jobTitle,
     totalYearsOfExperience: applicant?.totalYearsOfExperience || 2,
+    bio: applicant?.bio,
     jobs: applicant?.jobs ?? [],
 
     education: {
@@ -74,6 +80,5 @@ export const getInitialValues = (applicant?: Applicant) => {
     },
 
     portfolioLinks: applicant?.portfolioLinks ?? [],
-    languages: applicant?.languages ?? [],
   };
 };
