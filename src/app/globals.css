@@ -89,18 +89,24 @@ input[type='number'] {
 }
 
 .typewriter {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  animation: typing 3.5s steps(40, end) forwards; /* Typing effect */
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 3.5s steps(var(--chars)) forwards;
 }
 
-/* The typing effect */
-@keyframes typing {
-  from {
-    width: 0;
+@media (max-width: 600px) {
+  .typewriter {
+    white-space: normal;
+    width: auto;
+    animation: none;
   }
+}
+
+/* typing animation */
+@keyframes typing {
   to {
-    width: 100%;
+    width: calc(var(--chars) * 1ch);
   }
 }

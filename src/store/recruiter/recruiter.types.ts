@@ -14,4 +14,6 @@ export interface RecruiterState {
 export interface RecruiterActions {
   setRecruiter: (recruiter: Recruiter) => void;
   setLoading: (loading: boolean) => void;
+
+  updateProfile: (_id: string, data: Partial<Recruiter>) => Promise<boolean>;
 }

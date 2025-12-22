@@ -18,14 +18,19 @@ export const useApplicantStore = create<ApplicantState & ApplicantActions>(
 
       return new Promise<boolean>((resolve) => {
         api
-          .patch(`/applicants/${_id}`, updatedData, {
-            headers: getTokenHeaders(useAuthStore.getState().accessToken),
-          })
+          .patch(
+            `/applicants/${_id}`,
+            { ...updatedData, updateFrom: 'website' },
+            {
+              headers: getTokenHeaders(useAuthStore.getState().accessToken),
+            },
+          )
           .then((response) => {
             set({ applicant: response.data, loading: false });
             const authState = useAuthStore.getState();
             authState.setShowOnboardingModal(false);
-            message.success('Applicant profile updated successfully');
+            authState.setOpen(false);
+            message.success('Your profile updated successfully');
             authState.setShowSuccessModal(true);
             resolve(true);
           })

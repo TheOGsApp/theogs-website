@@ -150,7 +150,7 @@ export default function ApplicantForm() {
             label: 'Personal Info',
             children: (
               <Card style={{ borderRadius: 12 }}>
-                <Title level={4}>Personal Information</Title>
+                <Title level={4}>Your profile</Title>
 
                 <Form layout="vertical" className="flex flex-col gap-2">
                   <Form.Item
@@ -162,6 +162,7 @@ export default function ApplicantForm() {
                     <Input
                       placeholder="Full Name"
                       variant="filled"
+                      disabled={!!applicant?.name} // Disable if name is already set
                       {...formik.getFieldProps('name')}
                     />
                   </Form.Item>

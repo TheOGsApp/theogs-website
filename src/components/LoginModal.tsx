@@ -14,12 +14,15 @@ export const LoginModal = () => {
     step,
     otp,
     setOTP,
+    resendTimer,
+    isResendDisabled,
     setEmail,
     verifyOTP,
     sendOTP,
     isRecruiter,
     createProfile,
     closeModal,
+    showOnboardingModal,
     showRequirementsModal,
     setShowRequirementsModal,
     showSuccessModal,
@@ -28,25 +31,26 @@ export const LoginModal = () => {
 
   return (
     <>
-      <RequirementsModal
-        loading={loading}
-        open={showRequirementsModal}
-        onCreateProfile={createProfile}
-        onClose={() => setShowRequirementsModal(false)}
-        userType={userType}
-      />
-      <OnboardingModal />
-      <SuccessModal
-        open={showSuccessModal}
-        onClose={() => setShowSuccessModal(false)}
-      />
-      <Modal
-        open={open}
-        destroyOnHidden
-        onCancel={closeModal}
-        footer={null}
-        loading={loading}
-      >
+      {showRequirementsModal && (
+        <RequirementsModal
+          loading={loading}
+          open={showRequirementsModal}
+          onCreateProfile={createProfile}
+          onClose={() => setShowRequirementsModal(false)}
+          userType={userType}
+        />
+      )}
+
+      {showOnboardingModal && <OnboardingModal />}
+
+      {showSuccessModal && (
+        <SuccessModal
+          open={showSuccessModal}
+          onClose={() => setShowSuccessModal(false)}
+        />
+      )}
+
+      <Modal open={open} destroyOnHidden onCancel={closeModal} footer={null}>
         <Typography.Title level={4} className="pb-4">
           Welcome To TheOGs!
         </Typography.Title>
@@ -79,7 +83,9 @@ export const LoginModal = () => {
 
                       if (
                         value &&
-                        /@(gmail|yahoo|outlook)\.com$/i.test(value)
+                        /@(gmail|yahoo|outlook|hotmail|live|icloud|zoho|aol|msn|protonmail|gmx|fastmail|tutanota|mail)\.com$/i.test(
+                          value,
+                        )
                       ) {
                         return Promise.reject(
                           new Error('Please use your work email'),
@@ -102,7 +108,13 @@ export const LoginModal = () => {
                 />
               </Form.Item>
 
-              <Button className="mt-1" type="primary" htmlType="submit" block>
+              <Button
+                className="mt-1"
+                type="primary"
+                htmlType="submit"
+                block
+                loading={loading}
+              >
                 Get OTP
               </Button>
             </Form>
@@ -111,7 +123,11 @@ export const LoginModal = () => {
 
         {/* OTP STEP */}
         {step === 'otp' && (
-          <Form layout="vertical" onFinish={verifyOTP}>
+          <Form
+            className="flex flex-col items-end"
+            layout="vertical"
+            onFinish={verifyOTP}
+          >
             <Form.Item
               label="Enter OTP"
               name="otp"
@@ -137,8 +153,25 @@ export const LoginModal = () => {
               />
             </Form.Item>
 
-            <Button className="mt-1" type="primary" htmlType="submit" block>
+            <Button
+              className="mt-1"
+              type="primary"
+              htmlType="submit"
+              disabled={loading}
+              block
+            >
               Verify OTP
+            </Button>
+
+            <Button
+              className="mt-2 text-right"
+              type="link"
+              variant="link"
+              disabled={isResendDisabled}
+              onClick={sendOTP}
+              loading={loading}
+            >
+              Resend OTP {isResendDisabled && `in ${resendTimer}s`}
             </Button>
           </Form>
         )}

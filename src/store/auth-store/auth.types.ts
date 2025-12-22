@@ -32,6 +32,8 @@ export interface AuthState {
   userType: UserType;
   email: string;
   otp: string;
+  resendTimer: number;
+  isResendDisabled: boolean;
 }
 
 export interface AuthGetters {
@@ -49,6 +51,8 @@ export interface AuthActions {
   setShowRequirementsModal: (show: boolean) => void;
   setShowOnboardingModal: (showOnboardingModal: boolean) => void;
   setShowSuccessModal: (showSuccessModal: boolean) => void;
+  setResendTimer: (resendTimer: number) => void;
+  setIsResendDisabled: (isResendDisabled: boolean) => void;
 
   sendOTP: () => Promise<void>;
   verifyOTP: (otp: string) => Promise<void>;

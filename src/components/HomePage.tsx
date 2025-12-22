@@ -30,7 +30,10 @@ export function HomePage() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h1 className="text-4xl md:text-7xl font-black tracking-tight mb-8 text-white wrap-break-word whitespace-break-spaces typewriter">
+          <h1
+            className="text-4xl md:text-7xl font-black tracking-tight mb-8 text-white wrap-break-word whitespace-break-spaces typewriter"
+            style={{ '--chars': 20 } as React.CSSProperties}
+          >
             Your Experience
             <span className="ml-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Speaks

@@ -25,6 +25,8 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
     showRequirementsModal: false,
     showOnboardingModal: false,
     showSuccessModal: false,
+    resendTimer: 0,
+    isResendDisabled: false,
 
     isApplicant: () => {
       return get().userType === UserType.Applicant;
@@ -44,6 +46,8 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
     setEmail: (email) => set({ email }),
     setShowRequirementsModal: (show) => set({ showRequirementsModal: show }),
     setShowSuccessModal: (showSuccessModal) => set({ showSuccessModal }),
+    setResendTimer: (resendTimer) => set({ resendTimer }),
+    setIsResendDisabled: (isResendDisabled) => set({ isResendDisabled }),
 
     sendOTP: () => {
       return new Promise<void>((resolve) => {
@@ -59,14 +63,29 @@ export const useAuthStore = create<AuthState & AuthGetters & AuthActions>(
             loginFrom: 'website',
           })
           .then((response) => {
-            if (response.data.userDoesNotExist) {
+            const { userDoesNotExist, accessToken } = response.data;
+            if (userDoesNotExist) {
               set({ showRequirementsModal: true, open: false });
               return;
             }
-            if (response.data.accessToken) {
-              set({ accessToken: response.data.accessToken });
-              set({ step: 'otp' });
+            if (accessToken) {
+              set({
+                accessToken,
+                step: 'otp',
+                resendTimer: 30,
+                isResendDisabled: true,
+              });
               message.success(`OTP sent to ${email}`);
+
+              const interval = setInterval(() => {
+                const { resendTimer } = get();
+                if (resendTimer > 0) {
+                  set({ resendTimer: resendTimer - 1 });
+                } else {
+                  set({ isResendDisabled: false });
+                  clearInterval(interval);
+                }
+              }, 1000);
             }
           })
           .catch(() => {
