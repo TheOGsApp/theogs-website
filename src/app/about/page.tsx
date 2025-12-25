@@ -17,6 +17,7 @@ interface TeamMember {
   name: string;
   role: string;
   image: string;
+  largeImage?: boolean;
   description: string;
   socialMediaLinks: SocialMediaLink[];
 }
@@ -26,6 +27,7 @@ const teamMembers: TeamMember[] = [
     name: 'Naren',
     role: 'Founder & CEO',
     image: '/team/naren.png',
+    largeImage: true,
     description:
       'A tech visionary and leader, Naren is dedicated to creating limitless opportunities and shaping careers through innovation. As Founder and CEO, he drives the company’s mission to empower individuals, unlocking new possibilities in the tech world.',
     socialMediaLinks: [
@@ -50,6 +52,7 @@ const teamMembers: TeamMember[] = [
     name: 'Vinay',
     role: 'DevOps & Cloud Engineer',
     image: '/team/vinay.jpeg',
+    largeImage: true,
     description:
       'A cloud technology innovator, Vinay is dedicated to building cutting-edge solutions that leverage the power of the cloud. As a DevOps & Cloud Engineer, he’s shaping the future of cloud-based systems to drive efficiency and innovation.',
     socialMediaLinks: [
@@ -66,6 +69,54 @@ const teamMembers: TeamMember[] = [
       {
         platform: 'Instagram',
         url: 'https://www.instagram.com/vinay_kurra',
+        icon: 'instagram',
+      },
+    ],
+  },
+  {
+    name: 'ChatGPT',
+    role: 'Lead AI Developer & Code Specialist',
+    image: '/team/chatgpt.jpg',
+    description:
+      'ChatGPT: As Lead AI Developer & Code Specialist, I’ve been helping Naren turn ideas into reality. From coding the core features to optimizing AI performance, I’m shaping the product to be smarter, faster, and more innovative.',
+    socialMediaLinks: [
+      {
+        platform: 'LinkedIn',
+        url: 'https://www.linkedin.com/company/openai',
+        icon: 'linkedin',
+      },
+      {
+        platform: 'X',
+        url: 'https://x.com/ChatGPTapp',
+        icon: 'twitter',
+      },
+      {
+        platform: 'Instagram',
+        url: 'https://www.instagram.com/ChatGPT',
+        icon: 'instagram',
+      },
+    ],
+  },
+  {
+    name: 'Claude',
+    role: 'Lead AI Developer & Code Specialist',
+    image: '/team/claude.png',
+    description:
+      'Claude: As Lead AI Developer & Code Specialist, Claude is key in turning complex ideas into cutting-edge AI solutions. Helping Naren shape the product, Claude focuses on building the tech that drives innovation and makes everything run smoothly.',
+    socialMediaLinks: [
+      {
+        platform: 'LinkedIn',
+        url: 'https://www.linkedin.com/showcase/claude',
+        icon: 'linkedin',
+      },
+      {
+        platform: 'X',
+        url: 'https://x.com/claudeai',
+        icon: 'twitter',
+      },
+      {
+        platform: 'Instagram',
+        url: 'https://www.instagram.com/claudeai',
         icon: 'instagram',
       },
     ],
@@ -118,14 +169,14 @@ export default function AboutPage() {
             <motion.div
               key={member.name}
               whileHover={{ scale: 1.05 }}
-              className="bg-gray-900 rounded-xl p-6 border border-gray-800 text-center shadow-lg"
+              className="bg-gray-900 rounded-xl p-6 text-center shadow-lg"
             >
               <Image
                 src={member.image}
                 alt={member.name}
-                width={120}
-                height={120}
-                className="rounded-full mx-auto mb-4 border border-gray-700"
+                width={member.largeImage ? 120 : 60}
+                height={member.largeImage ? 120 : 60}
+                className="rounded-full mx-auto mb-4"
               />
 
               <h3 className="text-xl font-semibold">{member.name}</h3>
