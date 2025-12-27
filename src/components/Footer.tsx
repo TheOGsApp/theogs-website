@@ -19,7 +19,11 @@ const legalLinks = [
   },
 ];
 
-const productLinks = [{ name: 'How it works', href: '/how-it-works' }];
+const productLinks = [
+  { name: 'How it works', href: '/how-it-works' },
+  { name: 'FAQ', href: '/faq' },
+  { name: 'Terms and Conditions', href: '/terms-and-conditions' },
+];
 
 interface SocialMediaLink {
   name: string;

@@ -2,10 +2,10 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 
 import { appConfig } from '@/config';
+import { useAuthStore } from '@/store';
 
 interface SocialMediaLink {
   platform: string;
@@ -124,6 +124,7 @@ const teamMembers: TeamMember[] = [
 ];
 
 export default function AboutPage() {
+  const { setOpen } = useAuthStore();
   return (
     <div className="animate-fade-in-scale max-w-6xl mx-auto bg-black text-white p-10 border border-gray-800 shadow-xl">
       {/* Heading */}
@@ -216,12 +217,12 @@ export default function AboutPage() {
         <h2 className="text-2xl font-playfair font-semibold mb-4">Join Us</h2>
         <p className="text-gray-300 mb-6">
           Ready to swipe your way to a new career?{' '}
-          <Link
-            href="#app-download"
-            className="underline underline-offset-2 hover:text-gray-100 transition-colors font-semibold"
+          <a
+            className="underline underline-offset-2 hover:text-gray-100 transition-colors font-semibold cursor-pointer"
+            onClick={() => setOpen(true)}
           >
             Get started with TheOGs
-          </Link>{' '}
+          </a>{' '}
           or contact us at{' '}
           <a
             href={`mailto:${appConfig.supportEmail}`}
