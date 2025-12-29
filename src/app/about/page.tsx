@@ -169,51 +169,49 @@ export default function AboutPage() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {teamMembers
-            .filter((member) => member.enabled)
-            .map((member) => (
-              <motion.div
-                key={member.name}
-                whileHover={{ scale: 1.05 }}
-                className="bg-gray-900 rounded-xl p-6 text-center shadow-lg"
-              >
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  width={member.largeImage ? 120 : 60}
-                  height={member.largeImage ? 120 : 60}
-                  className="rounded-full mx-auto mb-4"
-                />
+          {teamMembers.map((member) => (
+            <motion.div
+              key={member.name}
+              whileHover={{ scale: 1.05 }}
+              className="bg-gray-900 rounded-xl p-6 text-center shadow-lg"
+            >
+              <Image
+                src={member.image}
+                alt={member.name}
+                width={member.largeImage ? 120 : 60}
+                height={member.largeImage ? 120 : 60}
+                className="rounded-full mx-auto mb-4"
+              />
 
-                <h3 className="text-xl font-semibold">{member.name}</h3>
-                <p className="text-gray-400 text-sm mb-3">{member.role}</p>
+              <h3 className="text-xl font-semibold">{member.name}</h3>
+              <p className="text-gray-400 text-sm mb-3">{member.role}</p>
 
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  {member.description}
-                </p>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                {member.description}
+              </p>
 
-                {/* ===== Social Icons ===== */}
-                <div className="flex justify-center space-x-4 mt-4">
-                  {member.socialMediaLinks.map((link) => {
-                    return (
-                      <a
-                        key={link.platform}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-white transition-colors"
-                      >
-                        <DynamicIcon
-                          name={link.icon}
-                          size={20}
-                          className="hover:text-blue-600"
-                        />
-                      </a>
-                    );
-                  })}
-                </div>
-              </motion.div>
-            ))}
+              {/* ===== Social Icons ===== */}
+              <div className="flex justify-center space-x-4 mt-4">
+                {member.socialMediaLinks.map((link) => {
+                  return (
+                    <a
+                      key={link.platform}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      <DynamicIcon
+                        name={link.icon}
+                        size={20}
+                        className="hover:text-blue-600"
+                      />
+                    </a>
+                  );
+                })}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
