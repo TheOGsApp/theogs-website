@@ -20,6 +20,7 @@ interface TeamMember {
   largeImage?: boolean;
   description: string;
   socialMediaLinks: SocialMediaLink[];
+  enabled?: boolean;
 }
 
 const teamMembers: TeamMember[] = [
@@ -28,6 +29,7 @@ const teamMembers: TeamMember[] = [
     role: 'Founder & CEO',
     image: '/team/naren.png',
     largeImage: true,
+    enabled: true,
     description:
       'A tech visionary and leader, Naren is dedicated to creating limitless opportunities and shaping careers through innovation. As Founder and CEO, he drives the company’s mission to empower individuals, unlocking new possibilities in the tech world.',
     socialMediaLinks: [
@@ -53,6 +55,7 @@ const teamMembers: TeamMember[] = [
     role: 'DevOps & Cloud Engineer',
     image: '/team/vinay.jpeg',
     largeImage: true,
+    enabled: true,
     description:
       'A cloud technology innovator, Vinay is dedicated to building cutting-edge solutions that leverage the power of the cloud. As a DevOps & Cloud Engineer, he’s shaping the future of cloud-based systems to drive efficiency and innovation.',
     socialMediaLinks: [
@@ -166,49 +169,51 @@ export default function AboutPage() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {teamMembers.map((member) => (
-            <motion.div
-              key={member.name}
-              whileHover={{ scale: 1.05 }}
-              className="bg-gray-900 rounded-xl p-6 text-center shadow-lg"
-            >
-              <Image
-                src={member.image}
-                alt={member.name}
-                width={member.largeImage ? 120 : 60}
-                height={member.largeImage ? 120 : 60}
-                className="rounded-full mx-auto mb-4"
-              />
+          {teamMembers
+            .filter((member) => member.enabled)
+            .map((member) => (
+              <motion.div
+                key={member.name}
+                whileHover={{ scale: 1.05 }}
+                className="bg-gray-900 rounded-xl p-6 text-center shadow-lg"
+              >
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={member.largeImage ? 120 : 60}
+                  height={member.largeImage ? 120 : 60}
+                  className="rounded-full mx-auto mb-4"
+                />
 
-              <h3 className="text-xl font-semibold">{member.name}</h3>
-              <p className="text-gray-400 text-sm mb-3">{member.role}</p>
+                <h3 className="text-xl font-semibold">{member.name}</h3>
+                <p className="text-gray-400 text-sm mb-3">{member.role}</p>
 
-              <p className="text-gray-300 text-sm leading-relaxed">
-                {member.description}
-              </p>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {member.description}
+                </p>
 
-              {/* ===== Social Icons ===== */}
-              <div className="flex justify-center space-x-4 mt-4">
-                {member.socialMediaLinks.map((link) => {
-                  return (
-                    <a
-                      key={link.platform}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      <DynamicIcon
-                        name={link.icon}
-                        size={20}
-                        className="hover:text-blue-600"
-                      />
-                    </a>
-                  );
-                })}
-              </div>
-            </motion.div>
-          ))}
+                {/* ===== Social Icons ===== */}
+                <div className="flex justify-center space-x-4 mt-4">
+                  {member.socialMediaLinks.map((link) => {
+                    return (
+                      <a
+                        key={link.platform}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors"
+                      >
+                        <DynamicIcon
+                          name={link.icon}
+                          size={20}
+                          className="hover:text-blue-600"
+                        />
+                      </a>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            ))}
         </div>
       </section>
 
