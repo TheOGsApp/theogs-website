@@ -52,12 +52,12 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Vinay',
-    role: 'DevOps & Cloud Engineer',
+    role: 'Chief Cloud & DevOps Engineer',
     image: '/team/vinay.jpeg',
     largeImage: true,
     enabled: true,
     description:
-      'A cloud technology innovator, Vinay is dedicated to building cutting-edge solutions that leverage the power of the cloud. As a DevOps & Cloud Engineer, he’s shaping the future of cloud-based systems to drive efficiency and innovation.',
+      'A cloud technology innovator, Vinay is dedicated to building cutting-edge solutions that leverage the power of the cloud. As a Chief Cloud & DevOps Engineer, he’s shaping the future of cloud-based systems to drive efficiency and innovation.',
     socialMediaLinks: [
       {
         platform: 'LinkedIn',
@@ -78,11 +78,11 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Engr. Hilary Ogalagu',
-    role: 'Markering Specialist',
+    role: 'Chief Marketing Officer',
     image: '/team/hilary.jpeg',
     largeImage: true,
     description:
-      'Engr. Hilary Ogalagu: As a Marketing Specialist, Hilary brings expertise in crafting compelling campaigns that resonate with audiences. By leveraging data-driven strategies, Hilary helps elevate brand presence and drive engagement for TheOGs.',
+      'Engr. Hilary Ogalagu: As a Chief Marketing Officer, Hilary brings expertise in crafting compelling campaigns that resonate with audiences. By leveraging data-driven strategies, Hilary helps elevate brand presence and drive engagement for TheOGs.',
     socialMediaLinks: [
       {
         platform: 'LinkedIn',
