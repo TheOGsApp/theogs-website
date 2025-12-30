@@ -77,6 +77,31 @@ const teamMembers: TeamMember[] = [
     ],
   },
   {
+    name: 'Engr. Hilary Ogalagu',
+    role: 'Markering Specialist',
+    image: '/team/hilary.jpeg',
+    largeImage: true,
+    description:
+      'Engr. Hilary Ogalagu: As a Marketing Specialist, Hilary brings expertise in crafting compelling campaigns that resonate with audiences. By leveraging data-driven strategies, Hilary helps elevate brand presence and drive engagement for TheOGs.',
+    socialMediaLinks: [
+      {
+        platform: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/hilary-ogalagu',
+        icon: 'linkedin',
+      },
+      {
+        platform: 'X',
+        url: 'https://x.com/weenix1',
+        icon: 'twitter',
+      },
+      {
+        platform: 'Instagram',
+        url: 'https://www.instagram.com/weenix1',
+        icon: 'instagram',
+      },
+    ],
+  },
+  {
     name: 'ChatGPT',
     role: 'Lead AI Developer & Code Specialist',
     image: '/team/chatgpt.jpg',
