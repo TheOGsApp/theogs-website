@@ -6,7 +6,7 @@ export default function CookiePolicyPage() {
       <h1 className="text-3xl font-playfair font-bold mb-6">
         TheOGs Cookie Policy
       </h1>
-      <p className="text-gray-400 mb-6">Effective Date: August 19, 2025</p>
+      <p className="text-gray-400 mb-6">Effective Date: 01.01.2026</p>
 
       {/* What Are Cookies */}
       <section className="mb-8">

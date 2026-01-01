@@ -165,7 +165,7 @@ export default function AboutPage() {
         <h2 className="text-2xl font-playfair font-semibold mb-4">Our Story</h2>
         <p className="text-gray-300 leading-relaxed">
           TheOGs was founded with a simple goal: to make job searching as
-          intuitive as swiping on your favorite app. Launched in 2025, we’ve
+          intuitive as swiping on your favorite app. Launched in 2026, we’ve
           grown into a global platform connecting job seekers and employers
           across regions like the EU, US, India, UAE, Singapore, Australia, and
           beyond. Our swipe-based approach, inspired by modern technology,
