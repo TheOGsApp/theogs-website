@@ -243,10 +243,6 @@ export default function FAQPage() {
           items={items}
           accordion
           className="!bg-black !border-gray-800"
-          style={{
-            backgroundColor: 'black',
-            borderColor: 'rgb(31, 41, 55)',
-          }}
         />
       ) : (
         <div className="text-center py-12">
@@ -258,7 +254,7 @@ export default function FAQPage() {
       )}
 
       {/* CTA Section */}
-      <div className="mt-12 bg-gray-900 border border-gray-800 rounded-lg p-8 text-center">
+      <div className="mt-12 bg-gray-900 border border-gray-900 rounded-lg p-8 text-center">
         <h3 className="text-xl font-bold text-gray-200 mb-3">
           Still have questions?
         </h3>

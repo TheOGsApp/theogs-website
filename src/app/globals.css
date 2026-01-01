@@ -110,3 +110,8 @@ input[type='number'] {
     width: calc(var(--chars) * 1ch);
   }
 }
+
+.ant-collapse .ant-collapse-panel {
+  background-color: unset !important;
+  border-top: unset !important;
+}
