@@ -96,6 +96,42 @@ const faqData: FAQItem[] = [
     answer:
       'Yes. We use bank-level encryption (AES-256) for all data. Your information is GDPR compliant and never shared with third parties.',
   },
+  // Add new FAQs for Applicant Services here:
+  {
+    id: '13',
+    category: 'Applicant Services',
+    question: 'What is included in the basic communication check?',
+    answer:
+      'The basic communication check verifies the applicant’s ability to communicate effectively in the required language(s). It is valid for 6 months and ensures they can handle basic communication tasks in a work environment. Prices vary depending on the country.',
+  },
+  {
+    id: '14',
+    category: 'Applicant Services',
+    question: 'How much does the background check cost?',
+    answer:
+      'The background check includes verification of the applicant’s employment history, and educational qualifications. There is no expiration for the background check, but a new verification is required for each new job. Prices differ by country.',
+  },
+  {
+    id: '15',
+    category: 'Applicant Services',
+    question: 'What does the technical check include and how long is it valid?',
+    answer:
+      'The technical check tests the applicant’s expertise in their field, whether it’s programming, design, or any other skill. It is valid for 6 months, after which a new test may be required. Prices vary by country.',
+  },
+  {
+    id: '16',
+    category: 'Applicant Services',
+    question: 'Do I have to pay separately for each check?',
+    answer:
+      'Yes, each check (communication, background, and technical) has its own cost, which may vary depending on the country. You can choose which checks are relevant for your candidate.',
+  },
+  {
+    id: '17',
+    category: 'Applicant Services',
+    question: 'How do I know the price for each service?',
+    answer:
+      'The pricing for each service is determined based on the country of the applicant. For accurate pricing, please contact us directly or refer to the country-specific pricing section on our platform.',
+  },
 ];
 
 const categories = Array.from(new Set(faqData.map((item) => item.category)));
