@@ -21,6 +21,7 @@ const legalLinks = [
 
 const productLinks = [
   { name: 'How it works', href: '/how-it-works' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'FAQ', href: '/faq' },
   { name: 'Terms and Conditions', href: '/terms-and-conditions' },
 ];
@@ -56,7 +57,7 @@ const socialMediaLinks: SocialMediaLink[] = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-gray-800 py-16">
+    <footer className="bg-white border-t border-gray-800 py-16">
       <AppDownloadSection />
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">

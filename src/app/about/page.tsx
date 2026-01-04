@@ -154,7 +154,7 @@ const teamMembers: TeamMember[] = [
 export default function AboutPage() {
   const { setOpen } = useAuthStore();
   return (
-    <div className="animate-fade-in-scale max-w-6xl mx-auto bg-black text-white p-10 border border-gray-800 shadow-xl">
+    <div className="animate-fade-in-scale max-w-6xl mx-auto text-white p-10 border border-gray-800 shadow-xl">
       {/* Heading */}
       <h1 className="text-4xl font-playfair font-bold mb-6 text-center">
         About <span className="text-gray-300">TheOGs</span>

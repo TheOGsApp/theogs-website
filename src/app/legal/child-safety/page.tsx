@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function ChildSafetyPage() {
   return (
-    <div className="animate-fade-in-scale max-w-4xl mx-auto bg-black text-white p-8 border border-gray-800 shadow-xl">
+    <div className="animate-fade-in-scale max-w-4xl mx-auto text-white p-8 border border-gray-800 shadow-xl">
       <h1 className="text-3xl font-playfair font-bold mb-6">
         Child Safety Standards
       </h1>

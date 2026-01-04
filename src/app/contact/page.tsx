@@ -82,7 +82,7 @@ export default function ContactPage() {
   });
 
   return (
-    <div className="animate-fade-in-scale max-w-4xl mx-auto bg-black text-white p-10 border border-gray-800 shadow-xl">
+    <div className="animate-fade-in-scale max-w-4xl mx-auto bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white p-10 border border-gray-800 shadow-xl">
       <ToastContainer />
       <h1 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-center">
         <span className="text-gray-400">Talk to us</span>
@@ -117,7 +117,7 @@ export default function ContactPage() {
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className="w-full border border-gray-700 rounded-lg px-4 py-2 bg-black text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            className="w-full border border-gray-700 rounded-lg px-4 py-2 bg-app text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500"
           />
           {formik.touched.name && formik.errors.name && (
             <ErrorMessage message={formik.errors.name} />
@@ -140,7 +140,7 @@ export default function ContactPage() {
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className="w-full border border-gray-700 rounded-lg px-4 py-2 bg-black text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            className="w-full border border-gray-700 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500"
           />
           {formik.touched.email && formik.errors.email && (
             <ErrorMessage message={formik.errors.email} />
@@ -163,7 +163,7 @@ export default function ContactPage() {
             value={formik.values.phone}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className="w-full border border-gray-700 rounded-lg px-4 py-2 bg-black text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            className="w-full border border-gray-700 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500"
           />
           {formik.touched.phone && formik.errors.phone && (
             <ErrorMessage message={formik.errors.phone} />
@@ -184,7 +184,7 @@ export default function ContactPage() {
             value={formik.values.reason}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className="w-full border border-gray-700 rounded-lg px-4 py-2 bg-black text-white focus:outline-none focus:ring-2 focus:ring-gray-500"
+            className="w-full border border-gray-700 rounded-lg px-4 py-2  text-white focus:outline-none focus:ring-2 focus:ring-gray-500"
           >
             {reasons.map((r) => (
               <option key={r.value} value={r.value}>
@@ -215,7 +215,7 @@ export default function ContactPage() {
             value={formik.values.message}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className="w-full border border-gray-700 rounded-lg px-4 py-3 bg-black text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            className="w-full border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500"
           />
           {formik.touched.message && formik.errors.message && (
             <ErrorMessage message={formik.errors.message} />

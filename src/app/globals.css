@@ -93,7 +93,7 @@ input[type='number'] {
   overflow: hidden;
   white-space: nowrap;
   width: 0;
-  animation: typing 3.5s steps(var(--chars)) forwards;
+  animation: typing 3.5s forwards;
 }
 
 @media (max-width: 600px) {
@@ -107,11 +107,15 @@ input[type='number'] {
 /* typing animation */
 @keyframes typing {
   to {
-    width: calc(var(--chars) * 1ch);
+    width: calc(20 * 1ch);
   }
 }
 
 .ant-collapse .ant-collapse-panel {
   background-color: unset !important;
   border-top: unset !important;
+}
+
+.bg-app {
+  @apply bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950;
 }

@@ -110,7 +110,7 @@ export default function HowItWorksPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white pb-16">
+    <div className="min-h-screen text-white pb-16">
       {/* Hero */}
       <div className="max-w-4xl mx-auto px-4 py-12 md:py-16 text-center">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-bold mb-4">

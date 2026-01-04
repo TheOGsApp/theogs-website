@@ -17,7 +17,7 @@ export function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
         {/* Floating Dev Words Background */}
@@ -30,10 +30,7 @@ export function HomePage() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h1
-            className="text-4xl md:text-7xl font-black tracking-tight mb-8 text-white wrap-break-word whitespace-break-spaces typewriter"
-            style={{ '--chars': 20 } as React.CSSProperties}
-          >
+          <h1 className="text-4xl md:text-7xl font-black tracking-tight mb-8 text-white wrap-break-word whitespace-break-spaces typewriter">
             Your Experience
             <span className="ml-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Speaks
@@ -104,7 +101,7 @@ export function HomePage() {
       </section>
 
       {/* Problem Statement Section */}
-      <section className="py-24 px-4 mt-4 bg-[#0a0a0a]">
+      <section className="py-24 px-4 mt-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold mb-8">
@@ -172,7 +169,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-24 px-6 bg-[#0a0a0a] overflow-hidden">
+      <section className="relative py-24 px-6 overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <div className="relative flex flex-col md:flex-row justify-center items-center gap-4 min-h-[600px]">
             <div className="md:absolute -left-12 top-1/2 md:-translate-y-1/2 md:-rotate-12 w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
@@ -241,7 +238,7 @@ export function HomePage() {
       </section>
 
       {/* For Companies & Developers Section */}
-      <section className="py-24 px-4 bg-black">
+      <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-bold mb-20 text-center">
             Built for Both Sides
@@ -359,7 +356,7 @@ export function HomePage() {
       </section>
 
       {/* Mission/Vision Section */}
-      <section className="py-24 px-4 mt-4 bg-[#0a0a0a]">
+      <section className="py-24 px-4 mt-4 ">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-bold mb-12">Our Mission</h2>
           <div className="text-xl text-gray-300 font-light leading-relaxed space-y-8">
@@ -396,7 +393,7 @@ export function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-black">
+      <section className="py-24 ">
         <div className="container mx-auto px-4">
           <h2 className="text-5xl md:text-6xl font-bold mb-20 text-center">
             Why People Choose TheOGs
@@ -456,7 +453,7 @@ export function HomePage() {
       </section>
 
       {/* Developer Language Section */}
-      <section className="py-24 px-4 mt-4 bg-[#0a0a0a]">
+      <section className="py-24 px-4 mt-4 ">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-12">
             We Speak Developer
@@ -536,7 +533,7 @@ export function HomePage() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-32 px-4 bg-black text-center relative">
+      <section className="py-32 px-4 text-center relative">
         <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
             Ready to Level Up <br />

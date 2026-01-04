@@ -18,7 +18,7 @@ export default function ConsentPage() {
   };
 
   return (
-    <div className="animate-fade-in max-w-3xl mx-auto bg-black text-white p-8 border border-gray-800 shadow-xl">
+    <div className="animate-fade-in max-w-3xl mx-auto text-white p-8 border border-gray-800 shadow-xl">
       <h1 className="text-3xl font-playfair font-bold mb-6">Cookie Consent</h1>
       <p className="text-gray-400 mb-8 leading-relaxed">
         TheOGs uses cookies to enhance your experience and provide analytics to

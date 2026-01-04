@@ -12,6 +12,7 @@ const menuItems = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'How It Works', href: '/how-it-works' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'Talk to Us', href: '/contact' },
   { name: 'Follow Us', href: '#socials' },
 ];
@@ -24,7 +25,7 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-black/90 text-white">
+    <header className="sticky top-0 z-50 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 text-white">
       <LoginModal />
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Brand */}

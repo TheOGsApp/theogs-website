@@ -78,9 +78,9 @@ export default function RootLayout({
 
         <meta name="author" content="TheOGs" />
       </head>
-      <body className="bg-black text-white font-inter">
+      <body className="bg-app text-white font-inter">
         <Header />
-        <main className="bg-black">{children}</main>
+        <main>{children}</main>
 
         {/* Footer */}
         <Footer />

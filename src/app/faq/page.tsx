@@ -184,7 +184,7 @@ export default function FAQPage() {
     }));
 
   return (
-    <div className="animate-fade-in-scale max-w-4xl mx-auto bg-black text-white p-10 border border-gray-800 shadow-xl">
+    <div className="animate-fade-in-scale max-w-4xl mx-auto text-white p-10 border border-gray-800 shadow-xl">
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
@@ -200,12 +200,13 @@ export default function FAQPage() {
       <div className="mb-8">
         <Input
           placeholder="Search FAQs..."
-          prefix={<SearchOutlined className="text-gray-500" />}
+          prefix={<SearchOutlined className="!text-black" />}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="!bg-gray-900 !border-gray-700 !text-white !placeholder-gray-500 text-base py-2"
+          className=" !border-gray-700 !text-black !placeholder-gray-900 text-base py-2"
           style={{
             borderRadius: '8px',
+            color: 'white',
           }}
         />
       </div>
@@ -229,7 +230,7 @@ export default function FAQPage() {
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               activeCategory === category
                 ? 'bg-gray-700 text-white'
-                : 'bg-gray-900 text-gray-300 border border-gray-700 hover:bg-gray-800'
+                : 'bg-gray-900 text-gray-200 border border-gray-700 hover:bg-gray-800'
             }`}
           >
             {category}
@@ -240,13 +241,19 @@ export default function FAQPage() {
       {/* FAQ Accordion */}
       {filteredFAQ.length > 0 ? (
         <Collapse
+          expandIconPlacement="end"
           items={items}
           accordion
-          className="!bg-black !border-gray-800"
+          className=" !border-gray-300 !text-white"
+          styles={{
+            header: {
+              color: 'white',
+            },
+          }}
         />
       ) : (
         <div className="text-center py-12">
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-300 text-lg">
             No FAQs found matching &quot;{searchTerm}&quot;. Try a different
             search term.
           </p>
@@ -258,7 +265,7 @@ export default function FAQPage() {
         <h3 className="text-xl font-bold text-gray-200 mb-3">
           Still have questions?
         </h3>
-        <p className="text-gray-400 mb-6">
+        <p className="text-gray-300 mb-6">
           Can&apos;t find the answer you&apos;re looking for? Our support team
           is here to help.
         </p>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function TermsAndConditionsPage() {
   return (
-    <div className="animate-fade-in-scale max-w-4xl mx-auto bg-black text-white p-10 border border-gray-800 shadow-xl">
+    <div className="animate-fade-in-scale max-w-4xl mx-auto text-white p-10 border border-gray-800 shadow-xl">
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
