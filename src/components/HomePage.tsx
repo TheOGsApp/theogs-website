@@ -403,7 +403,7 @@ export function HomePage() {
             {[
               {
                 title: 'Skilled-Only Roles',
-                desc: 'Every position requires minimum 2+ years of proven experience. No entry-level noise.',
+                desc: 'Every position requires minimum 2+ years of proven experience. No entry-level noise. 0% juniors and No unqualified applicants - ever',
                 icon: () => (
                   <DynamicIcon
                     name="shield"
