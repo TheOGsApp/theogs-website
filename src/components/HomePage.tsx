@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { appLinks } from '@/constants';
 import { useAuthStore } from '@/store';
 import { FloatingWords } from './FloatingWords';
+import Link from 'next/link';
 
 export function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -200,7 +201,7 @@ export function HomePage() {
                 {appLinks
                   .filter((link) => link.published)
                   .map((link) => (
-                    <a
+                    <Link
                       key={link.alt}
                       href={link.href}
                       target="_blank"
@@ -214,7 +215,7 @@ export function HomePage() {
                         unoptimized
                         className="object-cover"
                       />
-                    </a>
+                    </Link>
                   ))}
               </div>
             </div>

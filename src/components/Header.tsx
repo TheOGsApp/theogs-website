@@ -13,118 +13,139 @@ const menuItems = [
   { name: 'About', href: '/about' },
   { name: 'How It Works', href: '/how-it-works' },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'Talk to Us', href: '/contact' },
   { name: 'Follow Us', href: '#socials' },
 ];
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const hideMenu = () => {
-    setIsMenuOpen(false);
-  };
-
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 text-white">
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-slate-950/80 border-b border-white/10">
       <LoginModal />
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Brand */}
-        <h1 className="text-2xl font-playfair font-bold tracking-tight">
-          <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Image
-              src="/logo.png"
-              alt="TheOGs"
-              width={56}
-              height={56}
-              className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-gray-700 "
-            />
-          </Link>
-        </h1>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-8 text-sm uppercase tracking-wide font-semibold items-center">
+      <div className="container mx-auto px-4 py-2 flex items-center justify-between">
+        {/* Brand */}
+        <Link href="/">
+          <Image
+            src="/logo.png"
+            alt="TheOGs"
+            width={60}
+            height={60}
+            className="rounded-full border border-white/20"
+          />
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8 text-[clamp(14px,0.5vw,24px)] font-semibold uppercase tracking-wide">
           {menuItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="hover:text-gray-300 transition-colors duration-200"
+              className="relative text-white/80 hover:text-white transition-colors
+                         after:absolute after:-bottom-1 after:left-0 after:h-[2px]
+                         after:w-0 after:bg-white after:transition-all
+                         hover:after:w-full"
             >
               {item.name}
             </Link>
           ))}
 
+          {/* CTA */}
+          <Link
+            href="/contact"
+            className="ml-4 rounded-full bg-white text-black px-5 py-2 text-xs font-bold
+                       hover:bg-gray-200 transition"
+          >
+            Talk to Us
+          </Link>
+
           {/* App Links */}
-          <div className="flex space-x-4 ml-4">
+          <div className="flex items-center gap-3 ml-4">
             {appLinks
               .filter((link) => link.published)
               .map((link) => (
-                <a
+                <Link
                   key={link.id}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:opacity-90 transition-opacity hover:scale-110"
+                  className="hover:scale-105 transition-transform"
                 >
                   <Image
                     src={link.imgSrc}
                     alt={link.alt}
-                    width={120}
-                    height={40}
+                    width={110}
+                    height={36}
                   />
-                </a>
+                </Link>
               ))}
           </div>
         </nav>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden focus:outline-none"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
+          onClick={() => setIsMenuOpen(true)}
+          className="md:hidden text-white"
+          aria-label="Open menu"
         >
-          <DynamicIcon name={isMenuOpen ? 'x' : 'menu'} className="w-6 h-6" />
+          <DynamicIcon name="menu" className="w-6 h-6" />
         </button>
       </div>
 
-      {/* Mobile Nav */}
-      <nav
-        className={`md:hidden bg-black/90 border-t border-gray-800 px-4 overflow-hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-[400px] py-4' : 'max-h-0'
-        }`}
-      >
-        {menuItems.map((item) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            className="block py-2 text-white hover:text-gray-300 transition-colors duration-200"
-            onClick={hideMenu}
-          >
-            {item.name}
-          </Link>
-        ))}
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl md:hidden">
+          <div className="flex items-center justify-between px-4 h-16 border-b border-white/10">
+            <span className="font-playfair text-lg">Menu</span>
+            <button onClick={() => setIsMenuOpen(false)}>
+              <DynamicIcon name="x" className="w-6 h-6" />
+            </button>
+          </div>
 
-        {/* App Links */}
-        <div className="flex flex-col space-y-2 mt-4">
-          {appLinks
-            .filter((link) => link.published)
-            .map((link) => (
-              <a
-                key={link.id}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity"
+          <nav className="flex flex-col px-6 py-8 space-y-6 text-lg font-semibold">
+            {menuItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="text-white/80 hover:text-white transition"
               >
-                <Image
-                  src={link.imgSrc}
-                  alt={link.alt}
-                  width={150}
-                  height={50}
-                />
-              </a>
+                {item.name}
+              </Link>
             ))}
+
+            <Link
+              href="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="mt-4 inline-flex justify-center rounded-full
+                         bg-white text-black py-3 font-bold"
+            >
+              Talk to Us
+            </Link>
+
+            {/* App Links */}
+            <div className="pt-6 space-y-3">
+              {appLinks
+                .filter((link) => link.published)
+                .map((link) => (
+                  <Link
+                    key={link.id}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={link.imgSrc}
+                      alt={link.alt}
+                      width={160}
+                      height={50}
+                    />
+                  </Link>
+                ))}
+            </div>
+          </nav>
         </div>
-      </nav>
+      )}
     </header>
   );
 }

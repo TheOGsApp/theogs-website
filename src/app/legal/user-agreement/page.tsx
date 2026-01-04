@@ -92,12 +92,12 @@ export default function UserAgreementPage() {
         <h2 className="text-2xl font-playfair font-semibold mb-4">Contact</h2>
         <p className="text-gray-300 leading-relaxed">
           For legal notices, contact us at{' '}
-          <a
-            href="mailto:legal@theogs.app"
+          <Link
+            href="mailto:support@theogs.app"
             className="underline underline-offset-2 hover:text-gray-100 transition-colors"
           >
-            legal@theogs.app
-          </a>
+            support@theogs.app
+          </Link>
           .
         </p>
       </section>

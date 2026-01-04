@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
 import { appConfig } from '@/config';
 import { useAuthStore } from '@/store';
+import Link from 'next/link';
 
 interface Reason {
   value: string;
@@ -91,12 +92,12 @@ export default function ContactPage() {
       <p className="text-gray-300 mb-10 text-center leading-relaxed">
         Have questions or feedback? Reach out to our team, and we’ll get back to
         you as soon as possible. You can also email us directly at{' '}
-        <a
+        <Link
           href={`mailto:${appConfig.supportEmail}`}
           className="underline underline-offset-2 hover:text-gray-100 transition-colors"
         >
           {appConfig.supportEmail}
-        </a>
+        </Link>
         .
       </p>
 
@@ -238,12 +239,12 @@ export default function ContactPage() {
 
       <p className="text-gray-300 mt-10 text-center">
         Prefer to explore our app?{' '}
-        <a
+        <button
           className="underline underline-offset-2 hover:text-gray-100 font-semibold transition-colors cursor-pointer"
           onClick={() => setOpen(true)}
         >
           Get started with TheOGs
-        </a>
+        </button>
         .
       </p>
     </div>

@@ -3,6 +3,7 @@
 import { Collapse, Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 
 interface FAQItem {
   id: string;
@@ -269,12 +270,12 @@ export default function FAQPage() {
           Can&apos;t find the answer you&apos;re looking for? Our support team
           is here to help.
         </p>
-        <a
+        <Link
           href="/contact"
           className="inline-block bg-gray-800 hover:bg-gray-700 text-white font-semibold px-8 py-3 rounded-full transition-colors"
         >
           Contact Support
-        </a>
+        </Link>
       </div>
     </div>
   );

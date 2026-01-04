@@ -110,7 +110,7 @@ export function Footer() {
             </h3>
             <div className="flex space-x-4">
               {socialMediaLinks.map((social, i) => (
-                <a
+                <Link
                   key={i}
                   href={social.href}
                   target="_blank"
@@ -125,7 +125,7 @@ export function Footer() {
                     height={50}
                     className="hover:scale-150 transition-transform object-contain rounded-full"
                   />
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -137,12 +137,12 @@ export function Footer() {
             </h3>
             <p className="text-sm text-gray-500">
               Email:{' '}
-              <a
+              <Link
                 href={`mailto:${appConfig.supportEmail}`}
                 className="hover:text-black transition-colors"
               >
                 {appConfig.supportEmail}
-              </a>
+              </Link>
             </p>
           </div>
         </div>

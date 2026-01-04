@@ -54,11 +54,12 @@ const maskEmail = (email: string): string => {
 export default async function PublicProfilePage({
   params,
 }: {
-  params: { username: string };
+  params: Promise<{ username: string }>;
 }) {
   const { username } = await params;
+
   if (!username) {
-    return notFound();
+    notFound();
   }
 
   const { applicant, notFound: empty } = await getApplicant(username);

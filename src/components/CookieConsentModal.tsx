@@ -5,6 +5,7 @@ import { DynamicIcon } from 'lucide-react/dynamic';
 
 import { ToggleSwitch } from './ToggleSwitch';
 import { checkIfConsentRequired } from '@/constants';
+import Link from 'next/link';
 
 interface CookiePreferences {
   necessary: boolean;
@@ -127,19 +128,19 @@ export default function CookieConsentModal() {
               <div className="text-xs text-gray-500 border-t border-gray-800 pt-3">
                 <p>
                   Read our{' '}
-                  <a
+                  <Link
                     href="/legal/cookie-policy"
                     className="underline hover:text-gray-300"
                   >
                     Cookie Policy
-                  </a>{' '}
+                  </Link>{' '}
                   and{' '}
-                  <a
+                  <Link
                     href="/legal/privacy-policy"
                     className="underline hover:text-gray-300"
                   >
                     Privacy Policy
-                  </a>{' '}
+                  </Link>{' '}
                   for more information.
                 </p>
               </div>

@@ -327,21 +327,21 @@ export default function TermsAndConditionsPage() {
           <div className="bg-gray-900 border border-gray-800 rounded-lg p-4">
             <p className="mb-2">
               <span className="text-gray-400">Email:</span>{' '}
-              <a
+              <Link
                 href="mailto:support@theogs.app"
                 className="text-blue-400 hover:text-blue-300"
               >
                 support@theogs.app
-              </a>
+              </Link>
             </p>
             <p>
               <span className="text-gray-400">Website:</span>{' '}
-              <a
+              <Link
                 href="https://theogs.com"
                 className="text-blue-400 hover:text-blue-300"
               >
                 https://theogs.app
-              </a>
+              </Link>
             </p>
           </div>
         </section>

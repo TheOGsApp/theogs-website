@@ -6,6 +6,7 @@ import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 
 import { appConfig } from '@/config';
 import { useAuthStore } from '@/store';
+import Link from 'next/link';
 
 interface SocialMediaLink {
   platform: string;
@@ -219,7 +220,7 @@ export default function AboutPage() {
               <div className="flex justify-center space-x-4 mt-4">
                 {member.socialMediaLinks.map((link) => {
                   return (
-                    <a
+                    <Link
                       key={link.platform}
                       href={link.url}
                       target="_blank"
@@ -231,7 +232,7 @@ export default function AboutPage() {
                         size={20}
                         className="hover:text-blue-600"
                       />
-                    </a>
+                    </Link>
                   );
                 })}
               </div>
@@ -245,19 +246,19 @@ export default function AboutPage() {
         <h2 className="text-2xl font-playfair font-semibold mb-4">Join Us</h2>
         <p className="text-gray-300 mb-6">
           Ready to swipe your way to a new career?{' '}
-          <a
+          <button
             className="underline underline-offset-2 hover:text-gray-100 transition-colors font-semibold cursor-pointer"
             onClick={() => setOpen(true)}
           >
             Get started with TheOGs
-          </a>{' '}
+          </button>{' '}
           or contact us at{' '}
-          <a
+          <Link
             href={`mailto:${appConfig.supportEmail}`}
             className="underline underline-offset-2 hover:text-gray-100 transition-colors font-semibold"
           >
             {appConfig.supportEmail}
-          </a>{' '}
+          </Link>{' '}
           to learn more.
         </p>
       </section>

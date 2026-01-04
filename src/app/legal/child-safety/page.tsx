@@ -312,21 +312,21 @@ export default function ChildSafetyPage() {
         <ul className="list-disc pl-6 text-gray-300 space-y-2">
           <li>
             <strong>Email:</strong>{' '}
-            <a
+            <Link
               href="mailto:support@theogs.app"
               className="underline underline-offset-2 hover:text-gray-100 transition-colors"
             >
               support@theogs.app
-            </a>
+            </Link>
           </li>
           <li>
             <strong>Legal Contact:</strong>{' '}
-            <a
+            <Link
               href="mailto:support@theogs.app"
               className="underline underline-offset-2 hover:text-gray-100 transition-colors"
             >
               support@theogs.app
-            </a>
+            </Link>
           </li>
         </ul>
         <p className="text-gray-300 leading-relaxed mt-4">

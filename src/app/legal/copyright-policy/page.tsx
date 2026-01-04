@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function CopyrightPolicyPage() {
   return (
     <div className="animate-fade-in max-w-4xl mx-auto text-white p-8 border border-gray-800 shadow-xl">
@@ -27,12 +29,12 @@ export default function CopyrightPolicyPage() {
         <p className="text-gray-300 leading-relaxed">
           If you believe content on TheOGs infringes your copyright, submit a
           notice to{' '}
-          <a
-            href="mailto:copyright@theogs.app"
+          <Link
+            href="mailto:support@theogs.app"
             className="underline underline-offset-2 hover:text-gray-100 transition-colors"
           >
-            copyright@theogs.app
-          </a>{' '}
+            support@theogs.app
+          </Link>{' '}
           including:
         </p>
         <ul className="list-disc pl-6 text-gray-300 space-y-2 mt-4">

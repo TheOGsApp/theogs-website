@@ -60,12 +60,12 @@ export default function CookiePolicyPage() {
       {/* Contact */}
       <p className="text-gray-300">
         For questions, contact us at{' '}
-        <a
-          href="mailto:privacy@theogs.app"
+        <Link
+          href="mailto:support@theogs.app"
           className="underline underline-offset-2 hover:text-gray-100 transition-colors"
         >
-          privacy@theogs.app
-        </a>
+          support@theogs.app
+        </Link>
         .
       </p>
     </div>

@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="animate-fade-in max-w-4xl mx-auto text-white p-8 border border-gray-800 shadow-xl">
@@ -84,24 +86,24 @@ export default function PrivacyPolicyPage() {
           (Australia), including access, rectification, and objection to data
           processing. To exercise these rights or deactivate your account, use
           the TheOGs app’s settings or contact us at{' '}
-          <a
-            href="mailto:privacy@theogs.app"
+          <Link
+            href="mailto:support@theogs.app"
             className="underline underline-offset-2 hover:text-gray-100 transition-colors"
           >
-            privacy@theogs.app
-          </a>
+            support@theogs.app
+          </Link>
           .
         </p>
       </section>
 
       <p className="text-gray-300 leading-relaxed">
         For full details, contact us at{' '}
-        <a
-          href="mailto:privacy@theogs.app"
+        <Link
+          href="mailto:support@theogs.app"
           className="underline underline-offset-2 hover:text-gray-100 transition-colors"
         >
-          privacy@theogs.app
-        </a>
+          support@theogs.app
+        </Link>
         .
       </p>
     </div>

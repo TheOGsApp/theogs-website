@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import { appLinks } from '@/constants';
+import Link from 'next/link';
 
 export function AppDownloadSection() {
   return (
@@ -14,7 +15,7 @@ export function AppDownloadSection() {
             {appLinks
               .filter((link) => link.published)
               .map((link) => (
-                <a
+                <Link
                   id={link.id}
                   key={link.href}
                   href={link.href}
@@ -28,7 +29,7 @@ export function AppDownloadSection() {
                     width="120"
                     className="scale-110 hover:scale-120 transition-transform"
                   />
-                </a>
+                </Link>
               ))}
           </div>
           <p className="text-xs text-gray-500 mb-1">
