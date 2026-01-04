@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Check, TrendingDown } from 'lucide-react';
+import { useAuthStore } from '@/store';
 
 export default function PricingSection() {
   const [active, setActive] = useState('companies');
@@ -63,6 +64,7 @@ export default function PricingSection() {
 }
 
 function CompaniesPricing() {
+  const { setOpen } = useAuthStore();
   return (
     <div className="space-y-16">
       {/* Main Pricing Card */}
@@ -162,10 +164,14 @@ function CompaniesPricing() {
               </div>
             </div>
           </div>
-
-          <button className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 text-lg">
-            Create Employer Account
-          </button>
+          <div className="flex justify-center">
+            <button
+              className="bg-white text-black py-2 px-8 rounded-full font-semibold hover:scale-125 transition-all duration-300 text-lg cursor-pointer"
+              onClick={() => setOpen(true)}
+            >
+              Join TheOGs
+            </button>
+          </div>
         </div>
       </div>
 
