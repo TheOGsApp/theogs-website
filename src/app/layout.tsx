@@ -22,51 +22,61 @@ export default function RootLayout({
   return (
     <html lang="en" className={geist.className}>
       <head>
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+
         <title>
-          TheOGs | Swipe-Based Job Matching for Experienced Professionals
+          TheOGs – Swipe-Based Job Matching for Experienced Professionals
         </title>
+
         <meta
           name="description"
-          content="TheOGs is a swipe-based job matching platform exclusively for experienced professionals, helping you find your ideal career opportunity faster."
+          content="TheOGs is a swipe-based job matching platform for experienced professionals. Discover curated job opportunities, connect with top companies, and advance your career faster."
         />
+
         <meta
           name="keywords"
-          content="TheOGs, job matching, swipe jobs, experienced professionals, career, hiring, recruitment"
+          content="TheOGs, theogs app, swipe job matching, jobs for experienced professionals, senior jobs, professional hiring platform, tech jobs, executive jobs, career opportunities, recruitment app, hiring platform, job discovery app, talent marketplace"
         />
-        <meta name="author" content="TheOGs" />
-        <meta name="publisher" content="TheOGs" />
 
-        {/* Open Graph / Facebook */}
-        <meta property="og:title" content="TheOGs | Swipe-Based Job Matching" />
+        <link rel="canonical" href="https://theogs.app/" />
+
+        <link
+          rel="icon"
+          href="https://theogs.app/favicon.ico"
+          type="image/x-icon"
+          sizes="any"
+        />
+        <link
+          rel="apple-touch-icon"
+          href="https://theogs.app/logo.png"
+          sizes="180x180"
+        />
+
+        <meta property="og:title" content="TheOGs – Swipe-Based Job Matching" />
         <meta
           property="og:description"
-          content="Exclusive job matching for experienced professionals with a swipe-based interface to find your next career opportunity."
+          content="Swipe, match, and connect with top companies. TheOGs helps experienced professionals find the right career opportunities faster."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://theogs.com" />
-        <meta property="og:image" content="https://theogs.com/logo.png" />
+        <meta property="og:url" content="https://theogs.app/" />
+        <meta property="og:image" content="https://theogs.app/logo.png" />
+        <meta property="og:site_name" content="TheOGs" />
 
-        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        {/* <meta name="twitter:site" content="@TheOGsOfficial" /> */}
         <meta
           name="twitter:title"
-          content="TheOGs | Swipe-Based Job Matching"
+          content="TheOGs – Swipe-Based Job Matching"
         />
         <meta
           name="twitter:description"
-          content="Find your next career opportunity fast with TheOGs, the swipe-based job platform for experienced professionals."
+          content="A swipe-based job platform designed for experienced professionals and senior talent."
         />
-        <meta
-          name="twitter:image"
-          content="https://theogs.com/twitter-image.jpg"
-        />
+        <meta name="twitter:image" content="https://theogs.app/logo.png" />
+
+        <meta name="author" content="TheOGs" />
       </head>
       <body className="bg-black text-white font-inter">
         <Header />
