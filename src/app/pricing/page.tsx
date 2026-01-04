@@ -20,8 +20,10 @@ export default function PricingSection() {
             Transparent Pricing Built for Growth
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Success-based fees that align our interests with yours. Only pay
-            when you win—no hidden costs, no surprises.
+            Success-based fees that align our interests with yours.
+          </p>
+          <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            Only pay when you win - no hidden costs, no surprises.
           </p>
         </div>
 
