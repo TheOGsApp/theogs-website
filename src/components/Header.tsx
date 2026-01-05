@@ -22,7 +22,6 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-slate-950/80 border-b border-white/10">
       <LoginModal />
-
       <div className="container mx-auto px-4 py-2 flex items-center justify-between">
         {/* Brand */}
         <Link href="/">
@@ -91,61 +90,73 @@ export function Header() {
           <DynamicIcon name="menu" className="w-6 h-6" />
         </button>
       </div>
-
       {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl md:hidden">
-          <div className="flex items-center justify-between px-4 h-16 border-b border-white/10">
-            <span className="font-playfair text-lg">Menu</span>
-            <button onClick={() => setIsMenuOpen(false)}>
-              <DynamicIcon name="x" className="w-6 h-6" />
-            </button>
-          </div>
-
-          <nav className="flex flex-col px-6 py-8 space-y-6 text-lg font-semibold">
-            {menuItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="text-white/80 hover:text-white transition"
-              >
-                {item.name}
-              </Link>
-            ))}
-
-            <Link
-              href="/contact"
-              onClick={() => setIsMenuOpen(false)}
-              className="mt-4 inline-flex justify-center rounded-full
-                         bg-white text-black py-3 font-bold"
-            >
-              Talk to Us
-            </Link>
-
-            {/* App Links */}
-            <div className="pt-6 space-y-3">
-              {appLinks
-                .filter((link) => link.published)
-                .map((link) => (
-                  <Link
-                    key={link.id}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src={link.imgSrc}
-                      alt={link.alt}
-                      width={160}
-                      height={50}
-                    />
-                  </Link>
-                ))}
-            </div>
-          </nav>
+      <div
+        className={` fixed inset-0 z-50 bg-slate-950/95 text-white backdrop-blur-xl md:hidden transition-all duration-300 ease-in-out
+        ${
+          isMenuOpen
+            ? 'opacity-100 translate-x-0 pointer-events-auto'
+            : 'opacity-0 translate-x-full pointer-events-none'
+        }
+      `}
+      >
+        <div className="flex items-center justify-between px-4 py-2 border-b border-white/10">
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="TheOGs"
+              width={60}
+              height={60}
+              className="rounded-full border border-white/20"
+            />
+          </Link>
+          <button onClick={() => setIsMenuOpen(false)}>
+            <DynamicIcon name="x" className="w-6 h-6 text-white" />
+          </button>
         </div>
-      )}
+
+        <nav className="flex flex-col bg-slate-950/95 px-6 py-8 space-y-6 text-lg font-semibold">
+          {menuItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="text-white/80 hover:text-white transition"
+            >
+              {item.name}
+            </Link>
+          ))}
+
+          <Link
+            href="/contact"
+            onClick={() => setIsMenuOpen(false)}
+            className="mt-4 inline-flex justify-center rounded-full bg-white text-black py-3 font-bold"
+          >
+            Talk to Us
+          </Link>
+
+          {/* App Links */}
+          <div className="pt-6 space-y-3">
+            {appLinks
+              .filter((link) => link.published)
+              .map((link) => (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={link.imgSrc}
+                    alt={link.alt}
+                    width={160}
+                    height={50}
+                  />
+                </Link>
+              ))}
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }
