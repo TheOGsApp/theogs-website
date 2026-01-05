@@ -1,8 +1,8 @@
 export const appLinks = [
   {
     id: 'app-store',
-    published: false,
-    href: 'https://apps.apple.com/us/app/job-match-app/id1234567890', // Replace with your App Store link
+    published: true,
+    href: 'https://testflight.apple.com/join/16KgVZ3G', // Replace with your App Store link
     imgSrc: '/appstore.webp', // Add app store badge in the public folder
     alt: 'Download on the App Store',
   },
