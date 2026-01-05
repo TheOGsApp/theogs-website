@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Block private or non-public areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /auth/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /dashboard/
+
+# Sitemap (recommended)
+Sitemap: https://theogs.app/sitemap.xml
