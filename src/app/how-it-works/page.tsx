@@ -12,6 +12,8 @@ import {
   ThunderboltOutlined,
   RocketOutlined,
 } from '@ant-design/icons';
+import Image from 'next/image';
+
 import { useAuthStore } from '@/store';
 
 const applicantSteps = [
@@ -20,7 +22,7 @@ const applicantSteps = [
     title: 'Create Your Profile',
     description:
       'Sign up in seconds. Enter your details, skills, and experience. Everything handwritten, no third parties.',
-    icon: UserOutlined,
+    icon: <UserOutlined className="text-xl sm:text-2xl !text-white" />,
     gifUrl: '/welcome/connect.gif',
     highlight: 'Quick Setup',
   },
@@ -29,7 +31,7 @@ const applicantSteps = [
     title: 'Get Verified',
     description:
       'We verify your experience. Only 2+ years gets through. This keeps quality high.',
-    icon: CheckCircleOutlined,
+    icon: <CheckCircleOutlined className="text-xl sm:text-2xl !text-white" />,
     gifUrl: '/welcome/verification.gif',
     highlight: 'Quality Gate',
   },
@@ -38,7 +40,7 @@ const applicantSteps = [
     title: 'Swipe on Jobs',
     description:
       'Browse curated roles with full salary transparency. Swipe right on what fits.',
-    icon: ThunderboltOutlined,
+    icon: <ThunderboltOutlined className="text-xl sm:text-2xl !text-white" />,
     gifUrl: '/welcome/swipe.gif',
     highlight: 'No Surprises',
   },
@@ -47,7 +49,7 @@ const applicantSteps = [
     title: 'Match & Get Hired',
     description:
       'When companies like you back, chat directly. No recruiters, no gatekeepers.',
-    icon: RocketOutlined,
+    icon: <RocketOutlined className="text-xl sm:text-2xl !text-white" />,
     gifUrl: '/welcome/find.gif',
     highlight: 'Direct Connect',
   },
@@ -59,7 +61,7 @@ const recruiterSteps = [
     title: 'Post Your Role',
     description:
       'List your position with real salary ranges. Tell us what you need, skip the fluff.',
-    icon: RocketOutlined,
+    icon: <RocketOutlined className="text-xl sm:text-2xl !text-white" />,
     gifUrl: '/welcome/posting.gif',
     highlight: 'Be Honest',
   },
@@ -67,7 +69,7 @@ const recruiterSteps = [
     number: '02',
     title: 'Get Verified',
     description: 'We verify your company. This builds trust with developers.',
-    icon: CheckCircleOutlined,
+    icon: <CheckCircleOutlined className="text-xl sm:text-2xl !text-white" />,
     gifUrl: '/welcome/verification.gif',
     highlight: 'Build Trust',
   },
@@ -76,7 +78,7 @@ const recruiterSteps = [
     title: 'Swipe on Talent',
     description:
       'Browse verified developers with 2+ years experience. See real skills.',
-    icon: UserOutlined,
+    icon: <UserOutlined className="text-xl sm:text-2xl !text-white" />,
     gifUrl: '/welcome/swipe.gif',
     highlight: 'Real Devs',
   },
@@ -85,7 +87,7 @@ const recruiterSteps = [
     title: 'Hire Fast',
     description:
       'Match with developers who want your role. Chat directly and hire in days.',
-    icon: ThunderboltOutlined,
+    icon: <ThunderboltOutlined className="text-xl sm:text-2xl !text-white" />,
     gifUrl: '/welcome/find.gif',
     highlight: '10x Faster',
   },
@@ -109,43 +111,71 @@ export default function HowItWorksPage() {
     }
   };
 
+  const howToSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: `How TheOGs Works for ${activeTab === 'developers' ? 'Developers' : 'Companies'}`,
+    description: `Step-by-step guide to ${activeTab === 'developers' ? 'finding a tech job' : 'hiring top talent'} using our swipe-based platform.`,
+    step: steps.map((step) => ({
+      '@type': 'HowToStep',
+      name: step.title,
+      itemListElement: [
+        {
+          '@type': 'HowToDirection',
+          text: step.description,
+        },
+      ],
+    })),
+  };
+
   return (
     <div className="min-h-screen text-white pb-16">
-      {/* Hero */}
-      <div className="max-w-4xl mx-auto px-4 py-12 md:py-16 text-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+
+      {/* Hero Section */}
+      <header className="max-w-4xl mx-auto px-4 py-12 md:py-16 text-center">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-bold mb-4">
           <span className="text-gray-200">How It Works</span>
         </h1>
         <p className="text-gray-100 text-base md:text-lg leading-relaxed px-4">
-          Swipe your way to better job opportunities or top talent with TheOGs.
+          TheOGs uses a swipe-based approach to connect developers and companies
+          in seconds.
         </p>
-      </div>
+      </header>
 
-      {/* Tabs */}
-      <div className="max-w-4xl mx-auto px-4 pb-8 md:pb-12">
+      {/* Tabs - Semantic Navigation */}
+      <nav
+        className="max-w-4xl mx-auto px-4 pb-8 md:pb-12"
+        aria-label="Role selection"
+      >
         <div className="flex justify-center gap-2 sm:gap-4">
           <button
             onClick={() => handleTabChange('developers')}
+            aria-pressed={activeTab === 'developers'}
             className={`px-4 sm:px-8 py-2 sm:py-3 rounded-full font-semibold transition-colors text-sm sm:text-base ${
               activeTab === 'developers'
                 ? 'bg-white text-blue-600'
-                : 'bg-gray-800 text-white '
+                : 'bg-gray-800 text-white'
             }`}
           >
             For Developers
           </button>
           <button
             onClick={() => handleTabChange('companies')}
+            aria-pressed={activeTab === 'companies'}
             className={`px-4 sm:px-8 py-2 sm:py-3 rounded-full font-semibold transition-colors text-sm sm:text-base ${
               activeTab === 'companies'
                 ? 'bg-white text-blue-600'
-                : 'bg-gray-800 text-white '
+                : 'bg-gray-800 text-white'
             }`}
           >
             For Companies
           </button>
         </div>
-      </div>
+      </nav>
 
       {/* Swiper Cards */}
       <div className="w-full max-w-md mx-auto px-4 sm:px-6 pb-8">
@@ -164,7 +194,6 @@ export default function HowItWorksPage() {
             className="w-full h-full"
           >
             {steps.map((step, idx) => {
-              const Icon = step.icon;
               return (
                 <SwiperSlide key={idx}>
                   <div className="w-full h-full bg-white text-black rounded-2xl shadow-2xl p-4 sm:p-6 flex flex-col">
@@ -172,7 +201,7 @@ export default function HowItWorksPage() {
                     <div className="flex items-center justify-between mb-3 sm:mb-4 pb-2 sm:pb-3">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 sm:w-10 sm:h-10 bg-black flex items-center justify-center rounded-lg">
-                          <Icon className="text-xl sm:text-2xl text-white" />
+                          {step.icon}
                         </div>
                         <div>
                           <div className="text-[10px] sm:text-xs text-gray-500 font-bold">
@@ -190,9 +219,11 @@ export default function HowItWorksPage() {
 
                     {/* Image */}
                     <div className="flex-1 mb-3 sm:mb-4 rounded-lg overflow-hidden flex items-center justify-center bg-gray-50">
-                      <img
+                      <Image
                         src={step.gifUrl}
                         alt={step.title}
+                        width={300}
+                        height={200}
                         className="w-full h-full object-contain"
                       />
                     </div>

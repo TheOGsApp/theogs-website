@@ -1,13 +1,37 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { DynamicIcon } from 'lucide-react/dynamic';
+import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { appLinks } from '@/constants';
 import { useAuthStore } from '@/store';
 import { FloatingWords } from './FloatingWords';
-import Link from 'next/link';
+
+interface Feature {
+  title: string;
+  desc: string;
+  icon: IconName;
+}
+
+const features: Feature[] = [
+  {
+    title: 'Skilled-Only Roles',
+    desc: 'Every position requires minimum 2+ years of proven experience. No entry-level noise. 0% juniors and No unqualified applicants - ever',
+    icon: 'shield',
+  },
+  {
+    title: 'Transparent Salaries',
+    desc: 'No hidden numbers. Every role shows exact salary ranges upfront.',
+    icon: 'dollar-sign',
+  },
+  {
+    title: 'Respect for Time',
+    desc: 'Efficient, relevant hiring without irrelevant tests or drawn-out processes.',
+    icon: 'clock',
+  },
+];
 
 export function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,11 +41,25 @@ export function HomePage() {
     setIsVisible(true);
   }, []);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'TheOGs',
+    description:
+      'Job platform for experienced developers with 2+ years experience.',
+    operatingSystem: 'iOS, Android, Web',
+    applicationCategory: 'RecruitmentPlatform',
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
+    <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
-        {/* Floating Dev Words Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <FloatingWords />
         </div>
@@ -37,13 +75,6 @@ export function HomePage() {
               Speaks
             </span>
           </h1>
-          {/* <h2 className="text-xl md:text-4xl font-light text-gray-300 mb-8 leading-tight">
-            OGs is the space for experienced tech professionals who want
-            meaningful roles, not clutter.{' '}
-            <span className="font-bold text-white relative">
-              Here, your experience is valued and every job is curated.
-            </span>
-          </h2> */}
 
           <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-16 font-light leading-relaxed">
             No resume. No cover letter. No nonsense. Just your work, real
@@ -65,7 +96,6 @@ export function HomePage() {
             </button>
           </div>
 
-          {/* Quick Stats */}
           <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="text-center">
               <div className="flex justify-center mb-2">
@@ -116,7 +146,7 @@ export function HomePage() {
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-8">
-              <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+              <article className="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
                 <h3 className="text-xl font-bold text-red-400 mb-3">
                   Developers Avoid:
                 </h3>
@@ -126,9 +156,9 @@ export function HomePage() {
                   <li>• Unnecessary hoops & irrelevant tests</li>
                   <li>• Roles that don&apos;t fit your expertise</li>
                 </ul>
-              </div>
+              </article>
 
-              <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6">
+              <article className="bg-green-500/10 border border-green-500/30 rounded-xl p-6">
                 <h3 className="text-xl font-bold text-green-400 mb-3">
                   Companies Avoid:
                 </h3>
@@ -138,11 +168,11 @@ export function HomePage() {
                   <li>• Misaligned expectations</li>
                   <li>• Recruiting noise & spam</li>
                 </ul>
-              </div>
+              </article>
             </div>
 
             <div className="space-y-8">
-              <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6">
+              <article className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6">
                 <h3 className="text-xl font-bold text-blue-400 mb-3">
                   Our Solution:
                 </h3>
@@ -152,9 +182,9 @@ export function HomePage() {
                   <li>• Relevant matches only</li>
                   <li>• Mutual respect from day one</li>
                 </ul>
-              </div>
+              </article>
 
-              <div className="bg-purple-500/10 border border-purple-500/30 rounded-xl p-6">
+              <article className="bg-purple-500/10 border border-purple-500/30 rounded-xl p-6">
                 <h3 className="text-xl font-bold text-purple-400 mb-3">
                   TheOGs Difference:
                 </h3>
@@ -164,12 +194,13 @@ export function HomePage() {
                   <li>• Quality over quantity</li>
                   <li>• Better long-term hires</li>
                 </ul>
-              </div>
+              </article>
             </div>
           </div>
         </div>
       </section>
 
+      {/* App Download Section */}
       <section className="relative py-24 px-6 overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <div className="relative flex flex-col md:flex-row justify-center items-center gap-4 min-h-[600px]">
@@ -177,12 +208,11 @@ export function HomePage() {
               <div className="w-full h-full rounded-[45px] overflow-hidden relative">
                 <Image
                   src="/applicant.png"
-                  alt="phone"
+                  alt="talent app"
                   width={400}
                   height={800}
                   className="w-full h-full object-cover"
                 />
-
                 <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[130px] h-[35px] bg-black rounded-full z-10" />
               </div>
             </div>
@@ -191,12 +221,10 @@ export function HomePage() {
               <h2 className="text-4xl md:text-5xl font-bold mb-12 text-white">
                 Get TheOGs App
               </h2>
-
               <p className="text-gray-300 mb-6 leading-relaxed">
                 For you as a talent, TheOGs is completely free — and incredibly
                 helpful. Download the app and get started instantly.
               </p>
-
               <div className="flex justify-center gap-4 cursor-pointer">
                 {appLinks
                   .filter((link) => link.published)
@@ -220,18 +248,17 @@ export function HomePage() {
               </div>
             </div>
 
-            <div className="md:absolute -right-12 top-1/2 md:-translate-y-1/2 md:rotate-12  w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
+            <div className="md:absolute -right-12 top-1/2 md:-translate-y-1/2 md:rotate-12 w-[330px] h-[680px] bg-black rounded-[55px] p-3 shadow-2xl overflow-hidden">
               <div className="w-full h-full rounded-[45px] overflow-hidden relative">
                 <Image
                   src="/job.png"
-                  alt="phone"
+                  alt="job app"
                   width={400}
                   height={800}
                   unoptimized
                   className="w-full h-full object-cover"
                 />
-
-                <div className="absolute top-3 left-1/2 -translate-x-1/2  w-[130px] h-[35px] bg-black rounded-full z-10" />
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[130px] h-[35px] bg-black rounded-full z-10" />
               </div>
             </div>
           </div>
@@ -244,10 +271,8 @@ export function HomePage() {
           <h2 className="text-5xl md:text-6xl font-bold mb-20 text-center">
             Built for Both Sides
           </h2>
-
           <div className="grid lg:grid-cols-2 gap-16">
-            {/* For Developers */}
-            <div className="bg-white/5 border border-gray-800 rounded-2xl p-8">
+            <article className="bg-white/5 border border-gray-800 rounded-2xl p-8">
               <div className="flex items-center mb-6">
                 <DynamicIcon
                   name="code"
@@ -255,14 +280,12 @@ export function HomePage() {
                 />
                 <h3 className="text-3xl font-bold">For Developers</h3>
               </div>
-
               <div className="space-y-4 text-gray-300">
                 <p className="text-lg leading-relaxed">
                   Skip the noise and find opportunities that value your skills.
                   TheOGs connects you with teams who know the value of clean
                   code, scalable systems, and real engineering culture.
                 </p>
-
                 <div className="pt-4">
                   <h4 className="text-white font-semibold mb-3">
                     You’ll find:
@@ -299,10 +322,9 @@ export function HomePage() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </article>
 
-            {/* For Companies */}
-            <div className="bg-white/5 border border-gray-800 rounded-2xl p-8">
+            <article className="bg-white/5 border border-gray-800 rounded-2xl p-8">
               <div className="flex items-center mb-6">
                 <DynamicIcon
                   name="briefcase"
@@ -310,14 +332,12 @@ export function HomePage() {
                 />
                 <h3 className="text-3xl font-bold">For Companies</h3>
               </div>
-
               <div className="space-y-4 text-gray-300">
                 <p className="text-lg leading-relaxed">
                   Access a pool of proven developers who have shipped real
                   products, solved production issues, and think in systems — not
                   just syntax.
                 </p>
-
                 <div className="pt-4">
                   <h4 className="text-white font-semibold mb-3">You’ll get:</h4>
                   <ul className="space-y-2">
@@ -351,13 +371,13 @@ export function HomePage() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* Mission/Vision Section */}
-      <section className="py-24 px-4 mt-4 ">
+      {/* Mission Section */}
+      <section className="py-24 px-4 mt-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-bold mb-12">Our Mission</h2>
           <div className="text-xl text-gray-300 font-light leading-relaxed space-y-8">
@@ -394,72 +414,39 @@ export function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 ">
+      <section className="py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-5xl md:text-6xl font-bold mb-20 text-center">
             Why People Choose TheOGs
           </h2>
-
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Skilled-Only Roles',
-                desc: 'Every position requires minimum 2+ years of proven experience. No entry-level noise. 0% juniors and No unqualified applicants - ever',
-                icon: () => (
-                  <DynamicIcon
-                    name="shield"
-                    className="w-8 h-8 text-white group-hover:text-black transition-colors"
-                  />
-                ),
-              },
-              {
-                title: 'Transparent Salaries',
-                desc: 'No hidden numbers. Every role shows exact salary ranges upfront.',
-                icon: () => (
-                  <DynamicIcon
-                    name="dollar-sign"
-                    className="w-8 h-8 text-white group-hover:text-black transition-colors"
-                  />
-                ),
-              },
-              {
-                title: 'Respect for Time',
-                desc: 'Efficient, relevant hiring without irrelevant tests or drawn-out processes.',
-                icon: () => (
-                  <DynamicIcon
-                    name="clock"
-                    className="w-8 h-8 text-white group-hover:text-black transition-colors"
-                  />
-                ),
-              },
-            ].map((feature, i) => (
-              <div
+            {features.map((f, i) => (
+              <article
                 key={i}
                 className="group border border-gray-800 rounded-2xl p-8 hover:bg-white hover:text-black transition-all duration-300 transform hover:-translate-y-1"
               >
                 <div className="mb-6">
-                  <feature.icon />
+                  <DynamicIcon
+                    name={f.icon}
+                    className="w-8 h-8 text-white group-hover:text-black transition-colors"
+                  />
                 </div>
-
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-black transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-400 leading-relaxed group-hover:text-gray-700 transition-colors">
-                  {feature.desc}
+                <h3 className="text-2xl font-bold mb-4">{f.title}</h3>
+                <p className="text-gray-400 leading-relaxed group-hover:text-gray-700">
+                  {f.desc}
                 </p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Developer Language Section */}
-      <section className="py-24 px-4 mt-4 ">
+      {/* Dev Language Section */}
+      <section className="py-24 px-4 mt-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-12">
             We Speak Developer
           </h2>
-
           <div className="bg-black/50 border border-gray-700 rounded-2xl p-8 md:p-12">
             <div className="grid md:grid-cols-2 gap-12 text-left">
               <div>
@@ -495,7 +482,6 @@ export function HomePage() {
                   </p>
                 </div>
               </div>
-
               <div>
                 <h3 className="text-2xl font-bold mb-6 text-white">
                   For Companies:
@@ -540,7 +526,6 @@ export function HomePage() {
             Ready to Level Up <br />
             <span className="text-white">Your Dev Career?</span>
           </h2>
-
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
             TheOGs is for developers with minimum 2+ years of experience seeking
             and offering quality opportunities.{' '}
@@ -548,21 +533,19 @@ export function HomePage() {
               Join us and cut through the noise.
             </span>
           </p>
-
           <div className="space-y-6">
             <button
-              className="group cursor-pointer px-16 py-5 bg-white text-black font-bold text-xl rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-2xl"
+              className="group cursor-pointer px-16 py-5 bg-white text-black font-bold text-xl rounded-full hover:bg-gray-200 transition-all transform hover:scale-105 shadow-2xl"
               onClick={() => setOpen(true)}
             >
               <span className="flex items-center justify-center">
-                Join TheOGs
+                Join TheOGs{' '}
                 <DynamicIcon
                   name="arrow-right"
                   className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform"
                 />
               </span>
             </button>
-
             <div className="flex items-center justify-center space-x-6 text-sm text-gray-500">
               <span className="flex items-center">
                 <DynamicIcon name="users" className="w-4 h-4 mr-1" />
@@ -582,8 +565,9 @@ export function HomePage() {
           </div>
         </div>
       </section>
-      {/* Background Video */}
-      <section className="flex justify-center w-full">
+
+      {/* Video Section */}
+      <section className="flex justify-center w-full py-10">
         <video
           autoPlay
           loop
@@ -594,6 +578,6 @@ export function HomePage() {
           Your browser does not support the video tag.
         </video>
       </section>
-    </div>
+    </main>
   );
 }

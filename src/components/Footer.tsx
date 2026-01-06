@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { DynamicIcon, IconName } from 'lucide-react/dynamic';
 
 import { appConfig } from '@/config';
 import { AppDownloadSection } from './AppDownloadSection';
@@ -29,48 +29,66 @@ const productLinks = [
 interface SocialMediaLink {
   name: string;
   href: string;
-  imageUrl: string;
+  icon: IconName;
 }
 
 const socialMediaLinks: SocialMediaLink[] = [
   {
     name: 'Facebook',
     href: 'https://www.facebook.com/theogsapp',
-    imageUrl: '/social/facebook.png',
+    icon: 'facebook',
   },
   {
     name: 'Instagram',
     href: 'https://www.instagram.com/theogsapp',
-    imageUrl: '/social/instagram.png',
+    icon: 'instagram',
   },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/company/theogsapp',
-    imageUrl: '/social/linkedIn.png',
+    icon: 'linkedin',
   },
   {
     name: 'Twitter',
     href: 'https://x.com/theogsapp',
-    imageUrl: '/social/x.jpg',
+    icon: 'twitter',
   },
 ];
 
 export function Footer() {
+  // SEO: Social Profile Schema
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'TheOGs',
+    url: 'https://theogs.com',
+    logo: 'https://theogs.com/logo.png',
+    sameAs: socialMediaLinks.map((link) => link.href),
+  };
+
   return (
     <footer className="bg-white border-t border-gray-800 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+
       <AppDownloadSection />
+
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* About */}
-          <div>
+          <section>
             <h3 className="text-xl font-semibold mb-4">About TheOGs</h3>
             <p className="text-sm text-gray-500 leading-relaxed">
               TheOGs connects proven developers with top-tier opportunities at
               unicorns, leading startups, and respected tech companies. We cut
               the noise so skilled talent and great companies connect faster.
             </p>
-          </div>
-          <div>
+          </section>
+
+          {/* Product */}
+          <nav aria-label="Product links">
             <h3 className="text-xl font-semibold mb-4">Product</h3>
             <ul className="text-sm text-gray-500 leading-relaxed">
               {productLinks.map((link, i) => (
@@ -84,10 +102,10 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Legal */}
-          <div>
+          <nav aria-label="Legal links">
             <h3 className="text-xl font-semibold mb-4">Legal</h3>
             <ul className="text-sm text-gray-500 leading-relaxed">
               {legalLinks.map((link, i) => (
@@ -101,7 +119,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Socials */}
           <div id="socials">
@@ -116,22 +134,16 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-600 transition-colors"
-                  aria-label={social.name}
+                  aria-label={`Follow TheOGs on ${social.name}`}
                 >
-                  <Image
-                    alt={social.name}
-                    src={social.imageUrl}
-                    width={30}
-                    height={50}
-                    className="hover:scale-150 transition-transform object-contain rounded-full"
-                  />
+                  <DynamicIcon name={social.icon} className="w-6 h-6" />
                 </Link>
               ))}
             </div>
           </div>
 
           {/* Contact */}
-          <div>
+          <section>
             <h3 className="text-xl font-playfair font-semibold mb-4">
               Contact
             </h3>
@@ -144,7 +156,7 @@ export function Footer() {
                 {appConfig.supportEmail}
               </Link>
             </p>
-          </div>
+          </section>
         </div>
 
         {/* Footer Bottom */}

@@ -337,7 +337,7 @@ export default function TermsAndConditionsPage() {
             <p>
               <span className="text-gray-400">Website:</span>{' '}
               <Link
-                href="https://theogs.com"
+                href="https://theogs.app"
                 className="text-blue-400 hover:text-blue-300"
               >
                 https://theogs.app

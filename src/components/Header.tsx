@@ -19,23 +19,43 @@ const menuItems = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // SEO: Structured Data for Site Navigation
+  const navigationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: menuItems.map((item, index) => ({
+      '@type': 'SiteNavigationElement',
+      position: index + 1,
+      name: item.name,
+      url: `https://theogs.app${item.href}`, // Replace with your actual domain
+    })),
+  };
+
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-slate-950/80 border-b border-white/10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(navigationSchema) }}
+      />
       <LoginModal />
       <div className="container mx-auto px-4 py-2 flex items-center justify-between">
         {/* Brand */}
-        <Link href="/">
+        <Link href="/" aria-label="TheOGs Home">
           <Image
             src="/logo.png"
-            alt="TheOGs"
+            alt="TheOGs Logo"
             width={60}
             height={60}
+            priority // SEO: Faster LCP (Largest Contentful Paint)
             className="rounded-full border border-white/20"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 text-[clamp(14px,0.5vw,24px)] font-semibold uppercase tracking-wide">
+        <nav
+          className="hidden md:flex items-center gap-8 text-[clamp(14px,0.5vw,24px)] font-semibold uppercase tracking-wide"
+          aria-label="Main navigation"
+        >
           {menuItems.map((item) => (
             <Link
               key={item.name}
@@ -69,6 +89,7 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:scale-105 transition-transform"
+                  aria-label={`Download on ${link.alt}`}
                 >
                   <Image
                     src={link.imgSrc}
@@ -86,22 +107,26 @@ export function Header() {
           onClick={() => setIsMenuOpen(true)}
           className="md:hidden text-white"
           aria-label="Open menu"
+          aria-expanded={isMenuOpen}
         >
           <DynamicIcon name="menu" className="w-6 h-6" />
         </button>
       </div>
+
       {/* Mobile Menu Overlay */}
       <div
-        className={` fixed inset-0 z-50 bg-slate-950/95 text-white backdrop-blur-xl md:hidden transition-all duration-300 ease-in-out
+        className={`fixed inset-0 z-[100] bg-slate-900/95 text-white backdrop-blur-xl md:hidden transition-all duration-300 ease-in-out
         ${
           isMenuOpen
             ? 'opacity-100 translate-x-0 pointer-events-auto'
             : 'opacity-0 translate-x-full pointer-events-none'
         }
       `}
+        role="dialog"
+        aria-modal="true"
       >
         <div className="flex items-center justify-between px-4 py-2 border-b border-white/10">
-          <Link href="/">
+          <Link href="/" onClick={() => setIsMenuOpen(false)}>
             <Image
               src="/logo.png"
               alt="TheOGs"
@@ -110,12 +135,15 @@ export function Header() {
               className="rounded-full border border-white/20"
             />
           </Link>
-          <button onClick={() => setIsMenuOpen(false)}>
+          <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
             <DynamicIcon name="x" className="w-6 h-6 text-white" />
           </button>
         </div>
 
-        <nav className="flex flex-col bg-slate-950/95 px-6 py-8 space-y-6 text-lg font-semibold">
+        <nav
+          className="flex flex-col bg-slate-900 px-6 py-8 space-y-6 text-lg font-semibold"
+          aria-label="Mobile navigation"
+        >
           {menuItems.map((item) => (
             <Link
               key={item.name}
@@ -145,6 +173,7 @@ export function Header() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   <Image
                     src={link.imgSrc}
