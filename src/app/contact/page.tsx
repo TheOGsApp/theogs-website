@@ -16,7 +16,7 @@ const reasons: Reason[] = [
   { value: 'bug', label: 'Report a Bug' },
   { value: 'collaboration', label: 'Collaboration' },
   { value: 'careers', label: 'Careers' },
-  { value: 'deactivation', label: 'Account Deactivation' },
+  { value: 'account_deletion', label: 'Account Deletion' },
   { value: 'feature', label: 'Feature Request' },
   { value: 'feedback', label: 'Feedback' },
   { value: 'general', label: 'General Inquiry' },

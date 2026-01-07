@@ -13,14 +13,26 @@ export default function PrivacyPolicyPage() {
         <h2 className="text-2xl font-playfair font-semibold mb-4">
           Data We Collect
         </h2>
-        <p className="text-gray-300 leading-relaxed">
+
+        <p className="text-gray-300 leading-relaxed mb-4">
           TheOGs collects personal data necessary to provide our job matching
-          services, including:
+          services. The type of data collected depends on whether you are an
+          applicant or a recruiter.
         </p>
-        <ul className="list-disc pl-6 text-gray-300 space-y-2 mt-4">
+
+        <h3 className="text-lg font-semibold mb-2">Applicants</h3>
+        <ul className="list-disc pl-6 text-gray-300 space-y-2 mb-4">
           <li>Email address and username</li>
           <li>Profile information you choose to provide</li>
           <li>Job preferences, swipe activity, and match information</li>
+        </ul>
+
+        <h3 className="text-lg font-semibold mb-2">Recruiters</h3>
+        <ul className="list-disc pl-6 text-gray-300 space-y-2">
+          <li>Email address</li>
+          <li>Job postings and related job details</li>
+          <li>Match information with applicants</li>
+          <li>Company information you choose to provide</li>
         </ul>
       </section>
 
@@ -46,30 +58,37 @@ export default function PrivacyPolicyPage() {
         <h2 className="text-2xl font-playfair font-semibold mb-4">
           Account Deactivation and Data Retention
         </h2>
+
         <p className="text-gray-300 leading-relaxed">
-          When you choose to deactivate your account from the TheOGs app
-          settings:
+          When you choose to delete your account from the TheOGs app settings:
         </p>
+
         <ul className="list-disc pl-6 text-gray-300 space-y-2 mt-4">
+          <li>Your account is immediately deleted and becomes inaccessible</li>
           <li>
-            Your account is immediately deactivated and becomes inaccessible
+            Your profile and related content are removed from discovery and no
+            longer visible to other users
           </li>
           <li>
-            Your profile is removed from discovery and no longer visible to
-            other users
-          </li>
-          <li>
-            We retain limited data including your email address, username, and
-            match information
-          </li>
-          <li>
-            All other personal data associated with your account is scheduled
-            for deletion
+            Certain limited data is retained for a short period, as outlined
+            below
           </li>
         </ul>
 
         <p className="text-gray-300 leading-relaxed mt-4">
-          All non-retained data is permanently deleted within{' '}
+          <strong>Applicants:</strong> We retain limited data including your
+          email address, username, and match information.
+        </p>
+
+        <p className="text-gray-300 leading-relaxed mt-2">
+          <strong>Recruiters:</strong> We retain limited data including your
+          email address, job postings, match information, and company
+          information.
+        </p>
+
+        <p className="text-gray-300 leading-relaxed mt-4">
+          All other personal data associated with your account is scheduled for
+          deletion. Non-retained data is permanently deleted within{' '}
           <strong>90 days</strong> after account deactivation. After this 90-day
           period, retained data is also permanently deleted unless retention is
           required by law.
@@ -89,7 +108,7 @@ export default function PrivacyPolicyPage() {
         </h2>
         <p className="text-gray-300 leading-relaxed">We may share data with:</p>
         <ul className="list-disc pl-6 text-gray-300 space-y-2 mt-4">
-          <li>Employers for job matching purposes, based on your activity</li>
+          <li>Employers or applicants for job matching purposes</li>
           <li>Legal authorities when required to do so by law</li>
         </ul>
       </section>
@@ -102,8 +121,8 @@ export default function PrivacyPolicyPage() {
         <p className="text-gray-300 leading-relaxed">
           Depending on your location, you may have the right to access, correct,
           delete, or restrict the processing of your personal data. You can
-          deactivate your account at any time through the app settings or submit
-          a request to{' '}
+          delete your account at any time through the app settings or submit a
+          request to{' '}
           <Link
             className="underline underline-offset-2 hover:text-blue-600 transition-colors"
             href="/contact"
