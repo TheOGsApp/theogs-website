@@ -14,16 +14,13 @@ export default function PrivacyPolicyPage() {
           Data We Collect
         </h2>
         <p className="text-gray-300 leading-relaxed">
-          TheOGs collects personal data to provide our job swipe match services
-          globally, including:
+          TheOGs collects personal data necessary to provide our job matching
+          services, including:
         </p>
         <ul className="list-disc pl-6 text-gray-300 space-y-2 mt-4">
-          <li>Profile information (e.g., name, email, phone number).</li>
-          <li>Job preferences and swipe interactions (likes/rejects).</li>
-          <li>
-            Device data (e.g., IP address, browser type) and usage data via
-            cookies.
-          </li>
+          <li>Email address and username</li>
+          <li>Profile information you choose to provide</li>
+          <li>Job preferences, swipe activity, and match information</li>
         </ul>
       </section>
 
@@ -34,28 +31,54 @@ export default function PrivacyPolicyPage() {
         </h2>
         <p className="text-gray-300 leading-relaxed">We use your data to:</p>
         <ul className="list-disc pl-6 text-gray-300 space-y-2 mt-4">
-          <li>Match job seekers with employers based on swipe interactions.</li>
-          <li>Improve our services and personalize job recommendations.</li>
+          <li>Enable job matching between candidates and employers</li>
+          <li>Operate and improve the functionality of the app</li>
+          <li>Communicate important service-related information</li>
           <li>
-            Comply with global legal obligations, including GDPR (EU), CCPA
-            (US), IT Act (India), PDPA (Singapore), and Privacy Act (Australia).
+            Comply with applicable legal obligations (including GDPR, CCPA, and
+            other global privacy laws)
           </li>
         </ul>
       </section>
 
-      {/* Data Retention */}
-      <section className="mb-8 pb-6 border-b border-gray-800">
+      {/* Account Deactivation & Data Retention */}
+      <section className="mb-8 pb-6 border-b border-gray-800" id="deactivation">
         <h2 className="text-2xl font-playfair font-semibold mb-4">
-          Data Retention
+          Account Deactivation and Data Retention
         </h2>
         <p className="text-gray-300 leading-relaxed">
-          To ensure fair matching, we retain certain data (e.g., email, phone
-          number, swipe history) even if you deactivate your account via the
-          TheOGs app’s settings. Deactivation limits visibility but retains data
-          for matching integrity. Users in regions like the EU, US, India, UAE,
-          Singapore, and Australia may request data deletion where permitted by
-          applicable laws, though some data may be retained to comply with our
-          legitimate interests.
+          When you choose to deactivate your account from the TheOGs app
+          settings:
+        </p>
+        <ul className="list-disc pl-6 text-gray-300 space-y-2 mt-4">
+          <li>
+            Your account is immediately deactivated and becomes inaccessible
+          </li>
+          <li>
+            Your profile is removed from discovery and no longer visible to
+            other users
+          </li>
+          <li>
+            We retain limited data including your email address, username, and
+            match information
+          </li>
+          <li>
+            All other personal data associated with your account is scheduled
+            for deletion
+          </li>
+        </ul>
+
+        <p className="text-gray-300 leading-relaxed mt-4">
+          All non-retained data is permanently deleted within{' '}
+          <strong>90 days</strong> after account deactivation. After this 90-day
+          period, retained data is also permanently deleted unless retention is
+          required by law.
+        </p>
+
+        <p className="text-gray-300 leading-relaxed mt-4">
+          If you reactivate your account within the 90-day period, retained data
+          may be restored. After permanent deletion, recovery is no longer
+          possible.
         </p>
       </section>
 
@@ -64,14 +87,10 @@ export default function PrivacyPolicyPage() {
         <h2 className="text-2xl font-playfair font-semibold mb-4">
           Data Sharing
         </h2>
-        <p className="text-gray-300 leading-relaxed">We share data with:</p>
+        <p className="text-gray-300 leading-relaxed">We may share data with:</p>
         <ul className="list-disc pl-6 text-gray-300 space-y-2 mt-4">
-          <li>Employers for job matching (with your consent).</li>
-          <li>
-            Service providers for analytics and app functionality, compliant
-            with global privacy laws.
-          </li>
-          <li>Legal authorities when required by law in any jurisdiction.</li>
+          <li>Employers for job matching purposes, based on your activity</li>
+          <li>Legal authorities when required to do so by law</li>
         </ul>
       </section>
 
@@ -81,14 +100,20 @@ export default function PrivacyPolicyPage() {
           Your Rights
         </h2>
         <p className="text-gray-300 leading-relaxed">
-          Depending on your region, you have rights under laws like GDPR (EU),
-          CCPA (US), IT Act (India), PDPA (Singapore), and Privacy Act
-          (Australia), including access, rectification, and objection to data
-          processing. To exercise these rights or deactivate your account, use
-          the TheOGs app’s settings or contact us at{' '}
+          Depending on your location, you may have the right to access, correct,
+          delete, or restrict the processing of your personal data. You can
+          deactivate your account at any time through the app settings or submit
+          a request to{' '}
+          <Link
+            className="underline underline-offset-2 hover:text-blue-600 transition-colors"
+            href="/contact"
+          >
+            contact
+          </Link>{' '}
+          our team by emailing{' '}
           <Link
             href="mailto:support@theogs.app"
-            className="underline underline-offset-2 hover:text-gray-100 transition-colors"
+            className="underline underline-offset-2 hover:text-blue-600 transition-colors"
           >
             support@theogs.app
           </Link>
@@ -97,10 +122,11 @@ export default function PrivacyPolicyPage() {
       </section>
 
       <p className="text-gray-300 leading-relaxed">
-        For full details, contact us at{' '}
+        If you have questions about this Privacy Policy or our data practices,
+        contact us at{' '}
         <Link
           href="mailto:support@theogs.app"
-          className="underline underline-offset-2 hover:text-gray-100 transition-colors"
+          className="underline underline-offset-2 hover:text-blue-600 transition-colors"
         >
           support@theogs.app
         </Link>
