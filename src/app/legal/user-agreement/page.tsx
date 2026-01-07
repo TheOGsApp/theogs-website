@@ -73,9 +73,15 @@ export default function UserAgreementPage() {
           Termination
         </h2>
         <p className="text-gray-300 leading-relaxed">
-          You may deactivate your account at any time through the TheOGs app’s
-          settings. Deactivation limits visibility but retains certain data as
-          outlined in our{' '}
+          You may delete your account at any time via app settings or by
+          contacting us at{' '}
+          <Link
+            href="mailto:support@theogs.app"
+            className="underline underline-offset-2 hover:text-gray-100 transition-colors"
+          >
+            support@theogs.app
+          </Link>
+          . Please review our{' '}
           <Link
             href="/legal/privacy-policy"
             className="underline underline-offset-2 hover:text-gray-100 transition-colors"

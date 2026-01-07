@@ -88,7 +88,7 @@ const faqData: FAQItem[] = [
     category: 'Account',
     question: 'How do I delete my account?',
     answer:
-      'Go to Account Settings > Deactivation. You can temporarily suspend or permanently delete your account. All data will be removed within 30 days.',
+      'Go to Account Settings > Delete Account. You can temporarily suspend or permanently delete your account. All data will be removed within 30 days.',
   },
   {
     id: '12',

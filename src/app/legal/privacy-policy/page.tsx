@@ -53,10 +53,10 @@ export default function PrivacyPolicyPage() {
         </ul>
       </section>
 
-      {/* Account Deactivation & Data Retention */}
-      <section className="mb-8 pb-6 border-b border-gray-800" id="deactivation">
+      {/* Account Deletion & Data Retention */}
+      <section className="mb-8 pb-6 border-b border-gray-800" id="delete">
         <h2 className="text-2xl font-playfair font-semibold mb-4">
-          Account Deactivation and Data Retention
+          Account Deletion and Data Retention
         </h2>
 
         <p className="text-gray-300 leading-relaxed">
@@ -89,7 +89,7 @@ export default function PrivacyPolicyPage() {
         <p className="text-gray-300 leading-relaxed mt-4">
           All other personal data associated with your account is scheduled for
           deletion. Non-retained data is permanently deleted within{' '}
-          <strong>90 days</strong> after account deactivation. After this 90-day
+          <strong>90 days</strong> after account delete. After this 90-day
           period, retained data is also permanently deleted unless retention is
           required by law.
         </p>
