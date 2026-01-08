@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Check, TrendingDown } from 'lucide-react';
 import { useAuthStore } from '@/store';
+import { appConfig } from '@/config';
 
 export default function PricingSection() {
   const [active, setActive] = useState('companies');
@@ -141,7 +142,7 @@ function CompaniesPricing() {
                 'Human-curated candidate matching',
                 'Direct messaging & interview coordination',
                 'Candidate onboarding support',
-                'Full refund if hire leaves within 30 days',
+                `Full refund if hire leaves within ${appConfig.refundPeriodDays} days`,
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-emerald-400 flex-shrink-0" />
@@ -174,8 +175,9 @@ function CompaniesPricing() {
             <section className="bg-slate-800/20 rounded-xl p-6 border border-slate-700/30">
               <h4 className="font-semibold text-white mb-3">Refund Policy</h4>
               <p className="text-slate-300 text-sm">
-                If the candidate leaves within 30 days of their start date, a
-                full refund is issued. No questions asked.
+                If the candidate leaves within {appConfig.refundPeriodDays} days
+                of their start date, a full refund is issued. No questions
+                asked.
               </p>
             </section>
           </div>

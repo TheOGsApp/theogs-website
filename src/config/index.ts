@@ -4,4 +4,5 @@ export const appConfig = {
   appName: 'The OGS App',
   apiUrl: 'https://api.theogs.app/v1',
   cloudFrontUrl: 'https://d227ylu527v0wz.cloudfront.net',
+  refundPeriodDays: 60,
 };

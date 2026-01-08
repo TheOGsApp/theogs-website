@@ -17,6 +17,10 @@ const legalLinks = [
     name: 'Child Safety Standards',
     href: '/legal/child-safety',
   },
+  {
+    name: 'Platform rules',
+    href: '/legal/platform-rules',
+  },
 ];
 
 const productLinks = [
@@ -90,7 +94,7 @@ export function Footer() {
           {/* Product */}
           <nav aria-label="Product links">
             <h3 className="text-xl font-semibold mb-4">Product</h3>
-            <ul className="text-sm text-gray-500 leading-relaxed">
+            <ul className="text-sm text-gray-500 leading-relaxed p-0">
               {productLinks.map((link, i) => (
                 <li key={i} className="mb-1">
                   <Link
@@ -107,7 +111,7 @@ export function Footer() {
           {/* Legal */}
           <nav aria-label="Legal links">
             <h3 className="text-xl font-semibold mb-4">Legal</h3>
-            <ul className="text-sm text-gray-500 leading-relaxed">
+            <ul className="text-sm text-gray-500 leading-relaxed p-0">
               {legalLinks.map((link, i) => (
                 <li key={i} className="mb-1">
                   <Link

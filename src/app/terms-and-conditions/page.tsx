@@ -1,5 +1,6 @@
 'use client';
 
+import { appConfig } from '@/config';
 import Link from 'next/link';
 
 export default function TermsAndConditionsPage() {
@@ -84,12 +85,13 @@ export default function TermsAndConditionsPage() {
           <p className="mb-3 font-semibold text-white">Refund Policy:</p>
           <ul className="list-disc list-inside space-y-2 ml-4">
             <li>
-              If a candidate leaves within 30 days of their start date, you are
-              eligible for a 100% refund
+              If a candidate leaves within {appConfig.refundPeriodDays} days of
+              their start date, you are eligible for a 100% refund
             </li>
             <li>Refunds are processed within 5-7 business days</li>
             <li>
-              After 30 days, no refunds are available regardless of tenure
+              After {appConfig.refundPeriodDays} days, no refunds are available
+              regardless of tenure
             </li>
             <li>
               To claim a refund, contact our support team with proof of
@@ -253,7 +255,7 @@ export default function TermsAndConditionsPage() {
           <p className="mb-3">
             <span className="font-semibold text-white">Contact Support:</span>{' '}
             For disputes regarding payments, refunds, or job postings, contact
-            our support team at support@theogs.app.
+            our support team at {appConfig.supportEmail}.
           </p>
           <p className="mb-3">
             <span className="font-semibold text-white">Arbitration:</span> Any

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button, Drawer, Input, List, Typography } from 'antd';
 import { MessageOutlined } from '@ant-design/icons';
+import { appConfig } from '@/config';
 
 const { Text } = Typography;
 
@@ -45,8 +46,7 @@ const QA: { keywords: string[]; answer: string }[] = [
   },
   {
     keywords: ['refund', 'guarantee'],
-    answer:
-      'If a hire leaves within 30 days, a refund applies according to the pricing terms.',
+    answer: `If a hire leaves within ${appConfig.refundPeriodDays} days, a refund applies according to the pricing terms.`,
   },
 
   // Platform

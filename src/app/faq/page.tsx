@@ -4,6 +4,7 @@ import { Collapse, Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import { appConfig } from '@/config';
 
 interface FAQItem {
   id: string;
@@ -31,8 +32,7 @@ const faqData: FAQItem[] = [
     id: '3',
     category: 'Payment',
     question: 'Do I get a refund if the hired person leaves early?',
-    answer:
-      'Yes. If the candidate leaves within 30 days of accepting, we refund 100% of your payment. After 30 days, no refund is available.',
+    answer: `Yes. If the candidate leaves within ${appConfig.refundPeriodDays} days of accepting, we refund 100% of your payment. After ${appConfig.refundPeriodDays} days, no refund is available.`,
   },
   {
     id: '4',

@@ -13,6 +13,10 @@ const menuItems = [
   { name: 'About', href: '/about' },
   { name: 'How It Works', href: '/how-it-works' },
   { name: 'Pricing', href: '/pricing' },
+  {
+    name: 'Platform Rules',
+    href: '/legal/platform-rules',
+  },
   { name: 'Follow Us', href: '#socials' },
 ];
 
