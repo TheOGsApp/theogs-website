@@ -1,3 +1,4 @@
+// app/layout.tsx
 import './globals.css';
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
@@ -6,7 +7,57 @@ import { Footer, Header } from '@/components';
 import CookieConsentModal from '@/components/CookieConsentModal';
 
 export const metadata: Metadata = {
-  title: 'TheOGs',
+  title: {
+    default: 'TheOGs – Swipe-Based Job Matching for Experienced Professionals',
+    template: '%s | TheOGs',
+  },
+  description:
+    'TheOGs is a swipe-based job matching platform for experienced professionals. Discover curated job opportunities and connect with top companies faster.',
+  keywords: [
+    'TheOGs',
+    'job matching app',
+    'senior jobs',
+    'techjobs',
+    'swipe-based job platform',
+    'job search',
+    'career opportunities',
+    'job matching',
+    'tech careers',
+    'job discovery',
+    'experienced professionals',
+    'hiring platform',
+  ],
+  metadataBase: new URL('https://theogs.app'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'TheOGs – Swipe-Based Job Matching',
+    description:
+      'Swipe, match, and connect with top companies. Built for experienced professionals.',
+    url: 'https://theogs.app',
+    siteName: 'TheOGs',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'TheOGs',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TheOGs – Swipe-Based Job Matching',
+    description:
+      'A swipe-based job platform designed for experienced professionals.',
+    images: ['/logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const geist = Geist({
@@ -81,8 +132,6 @@ export default function RootLayout({
       <body className="bg-app text-white font-inter">
         <Header />
         <main>{children}</main>
-
-        {/* Footer */}
         <Footer />
         <CookieConsentModal />
       </body>
