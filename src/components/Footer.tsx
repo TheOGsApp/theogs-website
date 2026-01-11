@@ -38,6 +38,11 @@ interface SocialMediaLink {
 
 const socialMediaLinks: SocialMediaLink[] = [
   {
+    name: 'YouTube',
+    href: 'https://www.youtube.com/@theogsapp',
+    icon: 'youtube',
+  },
+  {
     name: 'Facebook',
     href: 'https://www.facebook.com/theogsapp',
     icon: 'facebook',

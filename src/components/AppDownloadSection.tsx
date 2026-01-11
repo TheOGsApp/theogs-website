@@ -1,7 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { appLinks } from '@/constants';
-import Link from 'next/link';
 
 export function AppDownloadSection() {
   return (
@@ -25,9 +25,9 @@ export function AppDownloadSection() {
                   <Image
                     src={link.imgSrc}
                     alt={link.alt}
-                    height="70"
-                    width="120"
-                    className="scale-110 hover:scale-120 transition-transform"
+                    height={70}
+                    width={120}
+                    className="h-auto w-auto scale-110 hover:scale-120 transition-transform"
                   />
                 </Link>
               ))}

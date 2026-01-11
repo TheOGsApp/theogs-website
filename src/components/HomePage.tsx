@@ -83,7 +83,7 @@ export function HomePage() {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
             <button
-              className="group cursor-pointer px-12 py-4 bg-white text-black font-bold text-lg rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-2xl"
+              className="group cursor-pointer px-8 py-3 bg-white text-black font-bold text-lg rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-2xl"
               onClick={() => setOpen(true)}
             >
               <span className="flex items-center justify-center">
@@ -535,7 +535,7 @@ export function HomePage() {
           </p>
           <div className="space-y-6">
             <button
-              className="group cursor-pointer px-16 py-5 bg-white text-black font-bold text-xl rounded-full hover:bg-gray-200 transition-all transform hover:scale-105 shadow-2xl"
+              className="group cursor-pointer px-16 py-3 bg-white text-black font-bold text-xl rounded-full hover:bg-gray-200 transition-all transform hover:scale-105 shadow-2xl"
               onClick={() => setOpen(true)}
             >
               <span className="flex items-center justify-center">

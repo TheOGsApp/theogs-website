@@ -83,7 +83,7 @@ export function Header() {
           </Link>
 
           {/* App Links */}
-          <div className="flex items-center gap-3 ml-4">
+          <div className="flex items-center gap-3">
             {appLinks
               .filter((link) => link.published)
               .map((link) => (
@@ -168,7 +168,7 @@ export function Header() {
           </Link>
 
           {/* App Links */}
-          <div className="pt-6 space-y-3">
+          <div className="flex justify-center gap-4">
             {appLinks
               .filter((link) => link.published)
               .map((link) => (
@@ -183,7 +183,8 @@ export function Header() {
                     src={link.imgSrc}
                     alt={link.alt}
                     width={160}
-                    height={50}
+                    height={30}
+                    className="h-auto w-auto"
                   />
                 </Link>
               ))}
