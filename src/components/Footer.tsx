@@ -62,6 +62,11 @@ const socialMediaLinks: SocialMediaLink[] = [
     href: 'https://x.com/theogsapp',
     icon: 'twitter',
   },
+  {
+    name: 'TikTok',
+    href: 'https://www.tiktok.com/@theogsapp',
+    icon: 'music-2',
+  },
 ];
 
 export function Footer() {
