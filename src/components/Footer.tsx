@@ -36,38 +36,40 @@ interface SocialMediaLink {
   icon: IconName;
 }
 
-const socialMediaLinks: SocialMediaLink[] = [
-  {
-    name: 'YouTube',
-    href: 'https://www.youtube.com/@theogsapp',
-    icon: 'youtube',
-  },
-  {
-    name: 'Facebook',
-    href: 'https://www.facebook.com/theogsapp',
-    icon: 'facebook',
-  },
-  {
-    name: 'Instagram',
-    href: 'https://www.instagram.com/theogsapp',
-    icon: 'instagram',
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/theogsapp',
-    icon: 'linkedin',
-  },
-  {
-    name: 'Twitter',
-    href: 'https://x.com/theogsapp',
-    icon: 'twitter',
-  },
-  {
-    name: 'TikTok',
-    href: 'https://www.tiktok.com/@theogsapp',
-    icon: 'music-2',
-  },
-];
+const socialMediaLinks: SocialMediaLink[] = [];
+
+// const socialMediaLinks: SocialMediaLink[] = [
+//   {
+//     name: 'YouTube',
+//     href: 'https://www.youtube.com/@theogsapp',
+//     icon: 'youtube',
+//   },
+//   {
+//     name: 'Facebook',
+//     href: 'https://www.facebook.com/theogsapp',
+//     icon: 'facebook',
+//   },
+//   {
+//     name: 'Instagram',
+//     href: 'https://www.instagram.com/theogsapp',
+//     icon: 'instagram',
+//   },
+//   {
+//     name: 'LinkedIn',
+//     href: 'https://www.linkedin.com/company/theogsapp',
+//     icon: 'linkedin',
+//   },
+//   {
+//     name: 'Twitter',
+//     href: 'https://x.com/theogsapp',
+//     icon: 'twitter',
+//   },
+//   {
+//     name: 'TikTok',
+//     href: 'https://www.tiktok.com/@theogsapp',
+//     icon: 'music-2',
+//   },
+// ];
 
 export function Footer() {
   // SEO: Social Profile Schema
