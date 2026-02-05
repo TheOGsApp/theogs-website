@@ -11,7 +11,7 @@ import { LoginModal } from './LoginModal';
 const menuItems = [
   { name: 'Home', href: '/' },
   { name: 'How It Works', href: '/how-it-works' },
-  // { name: 'Pricing', href: '/pricing' },
+  { name: 'Pricing', href: '/pricing' },
   {
     name: 'Platform Rules',
     href: '/legal/platform-rules',
