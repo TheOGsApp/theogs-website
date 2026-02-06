@@ -7,7 +7,6 @@ import Link from 'next/link';
 
 import { appLinks } from '@/constants';
 import { useAuthStore } from '@/store';
-import { FloatingWords } from './FloatingWords';
 
 interface Feature {
   title: string;
@@ -60,10 +59,6 @@ export function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <FloatingWords />
-        </div>
-
         <div
           className={`text-center max-w-5xl transition-all duration-1000 relative z-10 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
