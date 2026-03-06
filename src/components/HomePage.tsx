@@ -72,8 +72,8 @@ export function HomePage() {
           </h1>
 
           <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-16 font-light leading-relaxed">
-            No resume. No cover letter. No nonsense. Just your work, real
-            companies, and opportunities that actually fit.
+            No resume. No cover letter. Just your work, real companies, and
+            opportunities that actually fit.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
